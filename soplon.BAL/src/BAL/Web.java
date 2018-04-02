@@ -32,8 +32,11 @@ public class Web {
     }
     
     /* Constructor general de crawler*/
-    public Web(Ancla ancla) {
+    public Web(Ancla ancla) throws Exception {
         this.ancla = ancla;
+        this.hashWeb = Hasher.toSha256(ancla.getHashAncla() + Comunes.getTimeStamp().toString());
+        this.parseAnclaStatus = 0;
+        this.emailParseStatus = 0;
     }
     
     /* JSoup obtiene el html*/

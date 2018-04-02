@@ -39,6 +39,17 @@ public class Ancla {
         return creado;
     }
 
+    public Ancla(Dominios dominios, String urlAncla) throws Exception {
+        this.dominios = dominios;
+        this.hashAncla = Hasher.toSha256(urlAncla);
+        this.scanStatus = 0;
+        this.activado = true;
+        this.modificado = Comunes.getTimeStamp();
+        this.creado = Comunes.getTimeStamp();        
+        this.urlAncla = urlAncla;
+    }
+        
+    
     public Ancla(Dominios dominios, String hashAncla, String urlAncla) {
         this.dominios = dominios;
         this.hashAncla = hashAncla;

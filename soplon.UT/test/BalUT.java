@@ -46,12 +46,16 @@ public class BalUT {
     // public void hello() {}
         
     @Test
-    public void cargaDocumentoDesdeWeb(){
-        Dominios dominio = new Dominios("1234-124","https://readms.net/manga/");
-        Ancla ancla = new Ancla(dominio,"1234-124","https://readms.net/manga/");
+    public void cargaDocumentoDesdeWeb() throws Exception{
+        Dominios dominio = new Dominios("https://readms.net/manga/");
+        assertTrue("getHashDominios: Hash es de largo erróneo.", dominio.getHashDominios().length() == 64);
+        
+        Ancla ancla = new Ancla(dominio,"https://readms.net/manga/");
+        assertTrue("getHashAncla: Hash es de largo erróneo.", ancla.getHashAncla().length() == 64);
+        
         Web web = new Web(ancla);
         web.cargaDocumentoDesdeWeb();
         
-        assertTrue("Resultado de prueba", web.getDocument() != null);
+        assertTrue("web.getDocument() es null; El documento no fue cargado.", web.getDocument() != null);
     }
 }

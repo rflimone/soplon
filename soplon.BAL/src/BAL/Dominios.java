@@ -28,6 +28,14 @@ public class Dominios {
     public Timestamp getCreado() {
         return creado;
     }
+    
+    public Dominios(String urlDominios) throws Exception {
+        this.hashDominios = Hasher.toSha256(urlDominios);
+        this.urlDominios = urlDominios;
+        this.activado = true;
+        this.modificado = Comunes.getTimeStamp();
+        this.creado = Comunes.getTimeStamp();
+    }
 
     public Dominios(String hashDominios, String urlDominios) {
         this.hashDominios = hashDominios;
