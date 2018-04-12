@@ -1,7 +1,7 @@
 package entities;
 
-import services.Comunes;
-import services.Hasher;
+import dao.Comunes;
+import dao.Hasher;
 import java.sql.Timestamp;
 
 public class Ancla {

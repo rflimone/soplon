@@ -19,6 +19,7 @@ import controller.Web;
 import entities.Ancla;
 import entities.Dominios;
 import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -39,14 +40,14 @@ public class GreetingControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
-
+    @Ignore
     @Test
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("Hello, World!"));
     }
-
+    @Ignore
     @Test
     public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
@@ -55,6 +56,7 @@ public class GreetingControllerTests {
                 .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
     }
     
+    @Ignore
     @Test
     public void cargaDocumentoDesdeWeb() throws Exception{
         Dominios dominio = new Dominios("https://readms.net/manga/");
