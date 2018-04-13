@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 public class Soplon {
    public static void main(String[] args) throws IOException {
         /*Validate.isTrue(args.length == 1, "https://readms.net/manga/");*/
-        String url = "https://readms.net/manga/";
+        String url = "http://www.ticketpro.cl/sports/";
         print("Consiguiendo urls de %s...", url);
 
         Document doc = Jsoup.connect(url).get();
