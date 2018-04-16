@@ -4,6 +4,7 @@ package api;
 import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 
@@ -13,10 +14,10 @@ import org.jsoup.select.Elements;
 public class Soplon {
    public static void main(String[] args) throws IOException {
         /*Validate.isTrue(args.length == 1, "https://readms.net/manga/");*/
-        String url = "http://www.ticketpro.cl/sports/";
+        String url = "https://readms.net/rss";
         print("Consiguiendo urls de %s...", url);
 
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(url).parser(Parser.xmlParser()).get();
         Elements links = doc.select("a[href]");
         Elements media = doc.select("[src]");
         Elements imports = doc.select("link[href]");
@@ -40,6 +41,8 @@ public class Soplon {
         for (Element link : links) {
             print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
         }
+        
+        
     }
 
     private static void print(String msg, Object... args) {

@@ -15,10 +15,6 @@
  */
 package api;
 
-import controller.Web;
-import entities.Ancla;
-import entities.Dominios;
-import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -36,39 +32,24 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GreetingControllerTests {
-
+public class ControllerTests {
     @Autowired
     private MockMvc mockMvc;
+
     @Ignore
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
+    public void noParamUserGetAllDebeRetornarMensajePorDefecto() throws Exception {
 
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+        this.mockMvc.perform(get("/user/get-all")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("Usuario.findAll").value("Funciona"));
     }
+
     @Ignore
     @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
+    public void paramUserGetAllDebeRetornarMensajeCustomizado() throws Exception {
 
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+        this.mockMvc.perform(get("/user/get-all").param("nombres", "Renzo"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.content").value("Renzo"));
     }
-    
-    @Ignore
-    @Test
-    public void cargaDocumentoDesdeWeb() throws Exception{
-        Dominios dominio = new Dominios("https://readms.net/manga/");
-        assertTrue("getHashDominios: Hash es de largo erróneo.", dominio.getHashDominios().length() == 64);
-        
-        Ancla ancla = new Ancla(dominio,"https://readms.net/manga/");
-        assertTrue("getHashAncla: Hash es de largo erróneo.", ancla.getHashAncla().length() == 64);
-        
-        Web web = new Web(ancla);
-        web.cargaDocumentoDesdeWeb();
-        
-        assertTrue("web.getDocument() es null; El documento no fue cargado.", web.getDocument() != null);
-    }
-
 }

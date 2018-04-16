@@ -1,7 +1,7 @@
 package services;
 
-import dao.UserDao;
-import entities.Usuario;
+import dao.PaginaDao;
+import entities.Pagina;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -9,19 +9,15 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author rlimone
- */
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class UserService {
-
+public class PaginaService {
     @Autowired
-    private UserDao userDao;
+    private PaginaDao paginaDao;
 
     @Transactional(readOnly = true)
-    public List<Usuario> getUsers() {
-        return userDao.getUser();
+    public List<Pagina> getPaginas() {
+        return paginaDao.getPaginas();
     }
+
 }

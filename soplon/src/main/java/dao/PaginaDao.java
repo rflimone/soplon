@@ -1,7 +1,6 @@
 package dao;
 
 import entities.Pagina;
-import entities.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,8 +13,8 @@ public class PaginaDao {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Usuario> getPaginas() {
-        Query query = em.createNamedQuery("Paginas.findAll", Usuario.class);
+    public List<Pagina> getPaginas() {
+        Query query = em.createNamedQuery("Pagina.findAll", Pagina.class);
         return query.getResultList();
     }
 
