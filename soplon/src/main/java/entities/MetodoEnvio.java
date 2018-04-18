@@ -5,6 +5,7 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,10 +39,12 @@ public class MetodoEnvio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_metodos_envio")
     private Integer idMetodosEnvio;
+    @Size(max = 255)
     @Column(name = "glosa_metodo_envio")
-    private Integer glosaMetodoEnvio;
+    private String glosaMetodoEnvio;
     @JoinColumn(name = "id_usuarios", referencedColumnName = "id_usuarios")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Usuario idUsuarios;
 
     public MetodoEnvio() {
@@ -58,11 +62,11 @@ public class MetodoEnvio implements Serializable {
         this.idMetodosEnvio = idMetodosEnvio;
     }
 
-    public Integer getGlosaMetodoEnvio() {
+    public String getGlosaMetodoEnvio() {
         return glosaMetodoEnvio;
     }
 
-    public void setGlosaMetodoEnvio(Integer glosaMetodoEnvio) {
+    public void setGlosaMetodoEnvio(String glosaMetodoEnvio) {
         this.glosaMetodoEnvio = glosaMetodoEnvio;
     }
 

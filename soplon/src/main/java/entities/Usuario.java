@@ -5,6 +5,7 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -65,8 +66,10 @@ public class Usuario implements Serializable {
     @Column(name = "activo")
     private short activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarios", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<MetodoEnvio> metodoEnvioSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Subscripcion> subscripcionSet;
 
     public Usuario() {
