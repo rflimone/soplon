@@ -5,6 +5,11 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -66,11 +71,16 @@ public class Pagina implements Serializable {
     @Column(name = "imagen")
     private byte[] imagen;
     @ManyToMany(mappedBy = "paginaSet", fetch = FetchType.LAZY)
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "idTags")
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Categoria idCategorias;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagina", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Subscripcion> subscripcionSet;
 
     public Pagina() {

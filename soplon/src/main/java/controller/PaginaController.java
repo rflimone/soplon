@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PaginaController {
     @Autowired
-    private PaginaService userService;
+    private PaginaService paginaService;
     
     @GetMapping(value = "/pagina/get-all")
     public List<Pagina> getPaginas() {
-        return userService.getPaginas();
+        return paginaService.getPaginas();
     }
 }

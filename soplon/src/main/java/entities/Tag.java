@@ -5,6 +5,9 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -50,8 +53,12 @@ public class Tag implements Serializable {
         @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")}, inverseJoinColumns = {
         @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")})
     @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIdentityInfo(
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "idPaginas")
     private Set<Pagina> paginaSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTags", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Subscripcion> subscripcionSet;
 
     public Tag() {
@@ -119,5 +126,5 @@ public class Tag implements Serializable {
     public String toString() {
         return "mariadb.Tag[ idTags=" + idTags + " ]";
     }
-    
+
 }

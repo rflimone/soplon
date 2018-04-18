@@ -5,6 +5,7 @@
  */
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -47,6 +48,7 @@ public class Categoria implements Serializable {
     @Column(name = "glosa_categoria")
     private String glosaCategoria;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorias", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Pagina> paginaSet;
 
     public Categoria() {
