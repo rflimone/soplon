@@ -5,9 +5,8 @@
  */
 package entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -20,7 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -52,13 +51,11 @@ public class Tag implements Serializable {
     @JoinTable(name = "tags_paginas", joinColumns = {
         @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")}, inverseJoinColumns = {
         @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JsonIdentityInfo(
-            generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "idPaginas")
-    private Set<Pagina> paginaSet;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "tags")
+    private Pagina pagina;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTags", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "tags")
     private Set<Subscripcion> subscripcionSet;
 
     public Tag() {
@@ -84,13 +81,12 @@ public class Tag implements Serializable {
         this.glosaTag = glosaTag;
     }
 
-    @XmlTransient
-    public Set<Pagina> getPaginaSet() {
-        return paginaSet;
+    public Pagina getPagina() {
+        return pagina;
     }
 
-    public void setPaginaSet(Set<Pagina> paginaSet) {
-        this.paginaSet = paginaSet;
+    public void setPagina(Pagina pagina) {
+        this.pagina = pagina;
     }
 
     @XmlTransient

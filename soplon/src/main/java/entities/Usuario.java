@@ -67,10 +67,10 @@ public class Usuario implements Serializable {
     @Column(name = "activo")
     private short activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarios", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "metodoEnvio")
     private Set<MetodoEnvio> metodoEnvioSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "subscripciones")
     private Set<Subscripcion> subscripcionSet;
 
     public Usuario() {

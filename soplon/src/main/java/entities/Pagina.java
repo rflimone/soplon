@@ -6,10 +6,7 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -23,7 +20,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -70,17 +66,15 @@ public class Pagina implements Serializable {
     @Lob
     @Column(name = "imagen")
     private byte[] imagen;
-    @ManyToMany(mappedBy = "paginaSet", fetch = FetchType.LAZY)
-    @JsonIdentityInfo(
-            generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "idTags")
+    @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "tags")
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "paginas")
     private Categoria idCategorias;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagina", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "pagina")
     private Set<Subscripcion> subscripcionSet;
 
     public Pagina() {

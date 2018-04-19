@@ -20,4 +20,14 @@ public class PaginaService {
         return paginaDao.getPaginas();
     }
 
+    @Transactional
+    public void updatePagina(Pagina pagina) {
+        paginaDao.updatePagina(pagina);
+    }
+
+    @Transactional
+    public void insertPagina(Pagina pagina) {
+        paginaDao.insertPagina(pagina);
+    }
+
 }

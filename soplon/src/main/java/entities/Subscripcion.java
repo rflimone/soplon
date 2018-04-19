@@ -6,6 +6,7 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -33,15 +34,15 @@ public class Subscripcion implements Serializable {
     protected SubscripcionPK subscripcionPK;
     @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas", insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "pagina")
     private Pagina pagina;
     @JoinColumn(name = "id_usuarios", referencedColumnName = "id_usuarios", insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "subscripciones")
     private Usuario usuario;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "tags")
     private Tag idTags;
 
     public Subscripcion() {

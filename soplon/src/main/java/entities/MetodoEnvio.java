@@ -44,7 +44,7 @@ public class MetodoEnvio implements Serializable {
     private String glosaMetodoEnvio;
     @JoinColumn(name = "id_usuarios", referencedColumnName = "id_usuarios")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "metodoEnvio")
     private Usuario idUsuarios;
 
     public MetodoEnvio() {

@@ -48,7 +48,7 @@ public class Categoria implements Serializable {
     @Column(name = "glosa_categoria")
     private String glosaCategoria;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorias", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonManagedReference(value = "paginas")
     private Set<Pagina> paginaSet;
 
     public Categoria() {

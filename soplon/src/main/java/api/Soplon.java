@@ -6,12 +6,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
+import org.springframework.scheduling.annotation.Scheduled;
 
 
 /**
  * A simple example, used on the jsoup website.
  */
 public class Soplon {
+   @Scheduled(cron = "5 * * * * ?")
    public static void main(String[] args) throws IOException {
         /*Validate.isTrue(args.length == 1, "https://readms.net/manga/");*/
         String url = "https://readms.net/rss";
