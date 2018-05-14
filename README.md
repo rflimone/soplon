@@ -36,8 +36,6 @@ Al seleccionar un contenido debe solicitar tipo de recepción (email o celular)
 Al seleccionar tipo de recepción debe verificar su selección.
 Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a tu "tipo de recepción escogido", gracias por confiar en nosotros!"
 
-/* Revisar cómo manejar el registro de envíos para que sean mensuales */
-
 # Identificación de funciones del sitio:
 Login 
 Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
