@@ -55,6 +55,9 @@ public class Pagina implements Serializable {
     @Column(name = "url")
     private String url;
     @Size(max = 255)
+    @Column(name = "url_ultimo")
+    private String urlUltimo;
+    @Size(max = 255)
     @Column(name = "glosa_pagina")
     private String glosaPagina;
     @Column(name = "date_last")
@@ -106,6 +109,14 @@ public class Pagina implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUrlUltimo() {
+        return urlUltimo;
+    }
+
+    public void setUrlUltimo(String urlUltimo) {
+        this.urlUltimo = urlUltimo;
     }
 
     public String getGlosaPagina() {
@@ -190,5 +201,5 @@ public class Pagina implements Serializable {
     public String toString() {
         return "mariadb.Pagina[ idPaginas=" + idPaginas + " ]";
     }
-    
+
 }
