@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/login.css">
 
     <title>soplON</title>
     <nav aria-label="breadcrumb">
@@ -15,57 +16,82 @@
       </ol>
     </nav>
   </head>
-  <body>
+  <body class="container">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">soplON</a>
+      <a href="index.html"><img src="images/logo.png" class="rounded float-left"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0" method="get" action="busquedaSitioWeb.html">
-      
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-outline-success">Sitio Web</button>
-          </div>
-          
-        </form>
-        <form class="form-inline my-2 my-lg-0" method="get" action="busquedaContenido.html">
-      
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-outline-success">Contenido</button>
-          </div>
-          
-        </form>
-      </div>
-    </nav>
+        <div class="row d-flex justify-content-center">
+          <div class="d-flex flex-column">
+            <form class="form-inline my-2 my-lg-0" method="get" action="busquedaSitioWeb.html">          
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-sm-12">
-          <h2>Desarrollado por:</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="submit" class="btn btn-outline-dark">Sitio Web</button>
+                </div>         
+            </form>
+          </div>
+          <div class="cd-flex flex-column">
+            <form class="form-inline my-2 my-lg-0" method="get" action="busquedaContenido.html">
+
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn btn-outline-dark">Contenido</button>
+              </div>
+
+            </form>
+          </div>
         </div>
       </div>
 
-      <hr>
+    </nav>
+    <br>
 
-      <footer>
-        <p>Derechos Reservados © Company 2018</p>
-      </footer>
+    <div class="container">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Binvendo a Soplon</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </div>
     </div>
+
+    
   
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="js/bootstrap.js"></script>
+
+
+    <!-- Target Login-->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none: ;">
+        <div class="modal-dialog">
+        <div class="loginmodal-container">
+          <h1>Ingreso de Usuario</h1><br>
+          <form>
+            <input type="text" name="user" placeholder="Usuario">
+            <input type="password" name="pass" placeholder="Contraseña">
+            <input type="submit" name="login" class="login loginmodal-submit" value="Ingresar">
+          </form>
+          
+          <div class="login-help">
+            <a href="#">Registrar</a> - <a href="#">Olvidé mi Contraseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
+
+  
+  <div class="container">
+    <footer>
+      <p style="color: #FFFFFF">Derechos Reservados © Company 2018</p>
+    </footer>
+  </div>
 </html>

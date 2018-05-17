@@ -66,7 +66,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #34495E;
+  background-color: #fcaf17;
 }
 
 [tabindex="-1"]:focus {
@@ -474,7 +474,7 @@ mark,
 }
 
 footer{
-  background-color: #34495E;
+  background-color: #4d5158;
 }
 
 .blockquote-footer::before {
@@ -4699,7 +4699,7 @@ tbody.collapse.show {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: #000000;
   border-radius: 0.25rem;
 }
 
@@ -4707,7 +4707,7 @@ tbody.collapse.show {
   display: inline-block;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  color: #6c757d;
+  /*color: #6c757d;*/
   content: "/";
 }
 

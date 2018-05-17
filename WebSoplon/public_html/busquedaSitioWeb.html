@@ -17,35 +17,41 @@
     </nav>
 
   </head>
-  <body>
+  <body class="container">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">soplON</a>
+      <a href="index.html"><img src="images/logo.png" class="rounded float-left"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0" method="get" action="busquedaSitioWeb.html">
-      
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-outline-success">Sitio Web</button>
+        <div class="row d-flex justify-content-center">
+          <div class="d-flex flex-column">
+            <form class="form-inline my-2 my-lg-0" method="get" action="busquedaSitioWeb.html">          
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="submit" class="btn btn-outline-dark">Sitio Web</button>
+                </div>         
+            </form>
           </div>
-          
-        </form>
-        <form class="form-inline my-2 my-lg-0" method="get" action="busquedaContenido.html">
-      
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="submit" class="btn btn-outline-success">Contenido</button>
+          <div class="cd-flex flex-column">
+            <form class="form-inline my-2 my-lg-0" method="get" action="busquedaContenido.html">
+
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn btn-outline-dark">Contenido</button>
+              </div>
+
+            </form>
           </div>
-          
-        </form>
+        </div>
       </div>
+      
     </nav>
 
     <br>
     <div class="container">
-      <div class="input-group mb-3">
+      <div class="input-group sm-3">
         <input type="text" class="form-control" placeholder="Realice su busqueda" aria-label="Realice su busqueda" aria-describedby="basic-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button">Buscar</button>
@@ -53,9 +59,11 @@
       </div>
     </div>
 
+    <br>
+
 
   <div class="table-responsive">
-    <table class="table">
+    <table class="table sm-3">
       <tr>
         <td style="background-color: #B3B6B7">
           <a href="tipoMensaje.html">
@@ -78,7 +86,7 @@
         <td style="background-color: #B3B6B7">
           <a href="tipoMensaje.html">
             <p>Musica</p>
-            <img src="images/musica.jpg" class="img-thumbnail">
+            <img src="images/musica.jpg"  class="img-thumbnail">
           </a>
         </td>
       </tr>
@@ -86,21 +94,10 @@
   </div>
 
   <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-sm-12">
-          <h2>Desarrollado por:</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>Derechos Reservados © Company 2018</p>
-      </footer>
-    </div>
+    <footer>
+      <p style="color: #FFFFFF">Derechos Reservados © Company 2018</p>
+    </footer>
+  </div>
   
 
 
