@@ -19,6 +19,11 @@ public class PaginaService {
     public List<Pagina> getPaginas() {
         return paginaDao.getPaginas();
     }
+    
+    @Transactional(readOnly = true)
+    public List<Pagina> findPaginasWithTag(){
+        return paginaDao.findPaginasWithTag();
+    }    
 
     @Transactional
     public void updatePagina(Pagina pagina) {
@@ -28,6 +33,11 @@ public class PaginaService {
     @Transactional
     public void insertPagina(Pagina pagina) {
         paginaDao.insertPagina(pagina);
+    }
+        
+    @Transactional
+    public void updatePaginas(List<Pagina> paginaList) {
+        paginaDao.updatePaginas(paginaList);
     }
 
 }

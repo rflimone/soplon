@@ -2,6 +2,7 @@ package controller;
 
 import services.PaginaService;
 import entities.Pagina;
+import entities.Tag;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,11 @@ public class PaginaController {
     @GetMapping(value = "/pagina/get-all")
     public List<Pagina> getPaginas() {
         return paginaService.getPaginas();
+    }
+    
+    @GetMapping(value = "/pagina/getbytag")
+    public List<Pagina> findPaginasWithTag(){
+        return paginaService.findPaginasWithTag();
     }
     
     @PostMapping(value = "/pagina/update-page")

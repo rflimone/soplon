@@ -1,8 +1,9 @@
 package api;
 
-import ch.qos.logback.core.CoreConstants;
 import entities.Pagina;
+import entities.Tag;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import services.PaginaService;
+import services.*;
+
 
 @Configuration
 @EnableScheduling
@@ -25,10 +27,11 @@ public class Application {
     @Autowired
     public PaginaService paginaService;
 
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 10000)
     public void crawler() throws IOException {
-
-        List<Pagina> paginaList = paginaService.getPaginas();
+        
+        /*Modificar por entityGraph o JPQL para obtener paginas con tag o categorías*/
+        List<Pagina> paginaList = paginaService.findPaginasWithTag();
 
         for (Pagina pagina : paginaList) {
             String url = pagina.getUrl();
@@ -60,12 +63,18 @@ public class Application {
             
             print("\nLinks: (%d)", links.size());
             for (Element link : links) {
-                if(link.absUrl("href").toLowerCase().contains(url.toLowerCase()))
-                print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
+                for (Tag tag : pagina.getTagSet()) {
+                    if(link.absUrl("href").toLowerCase().contains(tag.getGlosaTag().toLowerCase())) {
+                        print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
+                        pagina.setUrlUltimo(link.attr("abs:href"));   
+                        pagina.setDateLast(new Date());
+                        
+                    }                    
+                }
             }
-
-        }
-
+        }      
+        
+        paginaService.updatePaginas(paginaList);
     }
 
     private static void print(String msg, Object... args) {
