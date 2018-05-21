@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" charset="utf-8"></script>
     <title>soplON</title>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -17,6 +17,38 @@
     </nav>
   </head>
   <body class="container">
+      <script type="text/javascript">
+        /*
+        $(document).on("ready", main);
+        function main(){
+          $("#buscar").on("click", function(){
+            var texto = "";
+            var tag = $("#buscar-manga").val();
+            $.getJSON("localhost:8080/pagina/get-all", function(datos){
+              $.each()
+            });
+        })*/
+        $(document).ready(function(){
+           $.ajax({
+              url : 'localhost:8080/pagina/get-all',
+              type : 'GET', 
+              dataType : 'json',
+              beforeSend: function(){
+                console.log('');
+              },
+              success: function(response){
+                console.log(response);
+              },
+              error: function(){
+                console.log('error');
+              }
+            })
+          }
+        });
+
+      </script>
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a href="index.html"><img src="images/logo.png" class="rounded float-left"></a>
@@ -64,7 +96,8 @@
     <table class="table">
       <tr>
         <td class="bg-primary">
-          <a href="tipoMensaje.html">
+          <!-- <a href="tipoMensaje.html"> -->
+          <a href="#" id="buscar-manga">
             <p>Manga</p>
               <img src="images/manga.jpg" class="img-thumbnail" >
           </a>
