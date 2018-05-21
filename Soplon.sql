@@ -24,8 +24,7 @@ CREATE TABLE `categorias` (
   `id_categorias` int(11) NOT NULL AUTO_INCREMENT,
   `glosa_categoria` varchar(255) NOT NULL,
   PRIMARY KEY (`id_categorias`),
-  UNIQUE KEY `id_categorias` (`id_categorias`),
-  UNIQUE KEY `glosa_categoria` (`glosa_categoria`)
+  UNIQUE KEY `id_categorias` (`id_categorias`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `categorias` */
