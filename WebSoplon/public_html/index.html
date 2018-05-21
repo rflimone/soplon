@@ -16,7 +16,24 @@
       </ol>
     </nav>
   </head>
+
+  <script>
+      fetch('http://localhost:8080/user/get-all') 
+      .then((respuesta.json) => { 
+        return respuesta.json();
+      } ).then((respuesta) => { 
+        document.getElementById('').value = respuesta.url;
+      } )
+  </script>
+
+
+
   <body class="container">
+
+    <div id="information">
+      <input type="text" id="url" value="cargando...">
+    </div>
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a href="index.html"><img src="images/logo.png" class="rounded float-left"></a>
