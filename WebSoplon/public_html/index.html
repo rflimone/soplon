@@ -18,11 +18,11 @@
   </head>
 
   <script>
-      fetch('http://localhost:8080/user/get-all') 
+      fetch('http://localhost:8080/pagina/get-all') 
       .then((respuesta.json) => { 
         return respuesta.json();
       } ).then((respuesta) => { 
-        document.getElementById('').value = respuesta.url;
+        document.getElementById('url').value = respuesta.url;
       } )
   </script>
 
@@ -31,7 +31,7 @@
   <body class="container">
 
     <div id="information">
-      <input type="text" id="url" value="cargando...">
+      <input type="text" id="url">
     </div>
 
 
