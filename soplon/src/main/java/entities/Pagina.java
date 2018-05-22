@@ -49,14 +49,14 @@ public class Pagina implements Serializable {
     @Column(name = "id_paginas")
     private Integer idPaginas;
     @Size(max = 255)
-    @Column(name = "dominio")
-    private String dominio;
-    @Size(max = 255)
     @Column(name = "url")
     private String url;
     @Size(max = 255)
     @Column(name = "url_ultimo")
     private String urlUltimo;
+    @Size(max = 255)
+    @Column(name = "titulo_pagina")
+    private String tituloPagina;
     @Size(max = 255)
     @Column(name = "glosa_pagina")
     private String glosaPagina;
@@ -95,14 +95,6 @@ public class Pagina implements Serializable {
         this.idPaginas = idPaginas;
     }
 
-    public String getDominio() {
-        return dominio;
-    }
-
-    public void setDominio(String dominio) {
-        this.dominio = dominio;
-    }
-
     public String getUrl() {
         return url;
     }
@@ -117,6 +109,14 @@ public class Pagina implements Serializable {
 
     public void setUrlUltimo(String urlUltimo) {
         this.urlUltimo = urlUltimo;
+    }
+
+    public String getTituloPagina() {
+        return tituloPagina;
+    }
+
+    public void setTituloPagina(String tituloPagina) {
+        this.tituloPagina = tituloPagina;
     }
 
     public String getGlosaPagina() {

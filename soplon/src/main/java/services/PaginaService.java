@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PaginaService {
+
     @Autowired
     private PaginaDao paginaDao;
 
@@ -19,22 +20,27 @@ public class PaginaService {
     public List<Pagina> getPaginas() {
         return paginaDao.getPaginas();
     }
-    
-    @Transactional(readOnly = true)
-    public List<Pagina> findPaginasWithTag(){
-        return paginaDao.findPaginasWithTag();
-    }    
 
-    @Transactional
-    public void updatePagina(Pagina pagina) {
-        paginaDao.updatePagina(pagina);
+    @Transactional(readOnly = true)
+    public List<Pagina> findPaginasWithTag() {
+        return paginaDao.findPaginasWithTag();
     }
 
     @Transactional
     public void insertPagina(Pagina pagina) {
         paginaDao.insertPagina(pagina);
     }
-        
+
+    @Transactional
+    public void insertPaginas(List<Pagina> paginaList) {
+        paginaDao.insertPaginas(paginaList);
+    }
+
+    @Transactional
+    public void updatePagina(Pagina pagina) {
+        paginaDao.updatePagina(pagina);
+    }
+
     @Transactional
     public void updatePaginas(List<Pagina> paginaList) {
         paginaDao.updatePaginas(paginaList);

@@ -34,13 +34,19 @@ public class PaginaDao {
         em.persist(pagina);
     }
 
+    public void insertPaginas(List<Pagina> paginaList) {
+        for (Pagina pagina : paginaList) {
+            em.persist(pagina);
+        }
+    }
+
     public Pagina updatePagina(Pagina pagina) {
         return em.merge(pagina);
     }
-    
+
     public void updatePaginas(List<Pagina> paginaList) {
         for (Pagina pagina : paginaList) {
             em.merge(pagina);
-        }        
+        }
     }
 }
