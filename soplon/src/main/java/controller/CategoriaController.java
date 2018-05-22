@@ -17,7 +17,7 @@ public class CategoriaController {
     
     @GetMapping(value = "/categoria/get-all")
     public List<Categoria> getCategoria() {
-        return categoriaService.getCategoria();
+        return categoriaService.getCategorias();
     }
     
     @PostMapping(value = "/categoria/update-categoria")

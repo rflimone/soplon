@@ -16,8 +16,8 @@ public class CategoriaService {
     private CategoriaDao categoriaDao;
 
     @Transactional(readOnly = true)
-    public List<Categoria> getCategoria() {
-        return categoriaDao.getCategoria();
+    public List<Categoria> getCategorias() {
+        return categoriaDao.getCategorias();
     }
 
     @Transactional

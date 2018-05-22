@@ -17,10 +17,8 @@ public class rssReaderTester {
                 System.out.println(feed.getTitle());
                 System.out.println("***********************************");
                 for (SyndEntry entry : feed.getEntries()) {
-                    System.out.println(entry.getLink());
-                    System.out.println(entry.getTitle());
-                    System.out.println(entry.getDescription().getValue());
-                    System.out.println(entry.getPublishedDate());
+                    System.out.println(feed);
+                    System.out.println(entry);
                     System.out.println("***********************************");
                 }
                 System.out.println("Done");

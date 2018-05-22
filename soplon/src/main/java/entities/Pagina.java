@@ -52,7 +52,7 @@ public class Pagina implements Serializable {
     @Column(name = "url")
     private String url;
     @Size(max = 255)
-    @Column(name = "url_ultimo")
+    @Column(name = "url_ultimo", unique = true)
     private String urlUltimo;
     @Size(max = 255)
     @Column(name = "titulo_pagina")

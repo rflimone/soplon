@@ -13,7 +13,7 @@ public class CategoriaDao {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Categoria> getCategoria() {
+    public List<Categoria> getCategorias() {
         Query query = em.createNamedQuery("Categoria.findAll", Categoria.class);
         return query.getResultList();
     }

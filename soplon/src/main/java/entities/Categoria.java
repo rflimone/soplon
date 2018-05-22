@@ -47,6 +47,10 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "glosa_categoria")
     private String glosaCategoria;
+    @Size(min = 1, max = 255)
+    @Column(name = "alias_categoria")
+    private String aliasCategoria;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorias", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "paginas")
     private Set<Pagina> paginaSet;
@@ -77,6 +81,14 @@ public class Categoria implements Serializable {
 
     public void setGlosaCategoria(String glosaCategoria) {
         this.glosaCategoria = glosaCategoria;
+    }
+
+    public String getAliasCategoria() {
+        return aliasCategoria;
+    }
+
+    public void setAliasCategoria(String aliasCategoria) {
+        this.aliasCategoria = aliasCategoria;
     }
 
     @XmlTransient
@@ -112,5 +124,5 @@ public class Categoria implements Serializable {
     public String toString() {
         return "mariadb.Categoria[ idCategorias=" + idCategorias + " ]";
     }
-    
+
 }
