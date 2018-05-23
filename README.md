@@ -40,8 +40,15 @@ Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a 
 ### (y su implementación 'x'):
 - [ ] Login
 - [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
+- [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente
+	- [x] Busqueda de sitios pre-cargados
+	- [x] Inserción automática con categorización
+	- [x] Actualizacion de data
 - [x] Listado de subscripciones del usuario
 - [x] Selección de buscador
 - [ ] Ranking de sitios web 
 - [ ] Ranking de tag de contenidos 
-- [x] selección de tipo de recepción 
+- [ ] selección de tipo de recepción 
+	- [x] Mail
+	- [ ] SMS
+	- [ ] PUSH
