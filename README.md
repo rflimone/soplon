@@ -7,11 +7,11 @@ El sitio se dedica a entregar notificaciones de entretenimiento basada en búsqu
 
 # Descripción del flujo del servicio / diagrama de secuencia (Vista Lógica):
 
-1.- Subscripción de Usuario
-Un usuario se subscribe al sitio indicando su nombre completo, email y/o celular. 
+1. Subscripción de Usuario
+Un usuario se subscribe al sitio indicando su nombre completo, email y/o celular.
 /* Se esta evaluando realizar subscripciones a través de RRSS tales como FB o Twitter, se debe evaluar si estos sitios entregan email y/o celular */
 
-2.- Búsquedas (Subscripciones)
+2. Búsquedas (Subscripciones)
 Existen 2 tipos de búsquedas (internamente se denominan tipos de subscripciones):
 
 Ruta 1: Por Dominio (Sitio web desde donde el usuario quiere recibir notificaciones)
@@ -36,16 +36,12 @@ Al seleccionar un contenido debe solicitar tipo de recepción (email o celular)
 Al seleccionar tipo de recepción debe verificar su selección.
 Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a tu "tipo de recepción escogido", gracias por confiar en nosotros!"
 
-# Identificación de funciones del sitio:
-Login 
-Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
-Listado de subscripciones del usuario
-Selección de buscador/subscripción
-Ranking de sitios web
-selección de sitio web
-Ranking de tag de contenidos
-selección de tag de contenido
-selección de tipo de recepción
-
-
-
+# Identificación de funciones del sitio
+###(y su implementación 'x'):
+- [ ] Login
+- [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
+- [x] Listado de subscripciones del usuario
+- [x] Selección de buscador
+- [ ] Ranking de sitios web 
+- [ ] Ranking de tag de contenidos 
+- [x] selección de tipo de recepción 
