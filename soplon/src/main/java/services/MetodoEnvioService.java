@@ -34,7 +34,7 @@ public class MetodoEnvioService {
                     .to(user, userMail)
                     .withSubject("Nuevo contenido de "+tag)
                     .withPlainText("Enhorabuena!, lo nuevo de "+titulo_pagina+" ya esta diponible en "+url_actualizada)
-                    .withPlainText("En detalle, se trata de"+glosa_pagina)
+                    .withPlainText("En detalle, se trata de "+glosa_pagina)
                     .withPlainText("Esto fue subido al sitio en fecha "+date_new)
                     .withPlainText("Esperamos disfrutes de este contenido")
                     .buildEmail();

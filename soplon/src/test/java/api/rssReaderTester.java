@@ -10,16 +10,24 @@ public class rssReaderTester {
     public static void main(String[] args) {
  
         try {
-            String url = "https://readms.net/rss";
+            String url = "https://mangahis.com/feed";
  
             try (XmlReader reader = new XmlReader(new URL(url))) {
                 SyndFeed feed = new SyndFeedInput().build(reader);
                 System.out.println(feed.getTitle());
                 System.out.println("***********************************");
                 for (SyndEntry entry : feed.getEntries()) {
-                    System.out.println(feed);
-                    System.out.println(entry);
+                    
+                                  
+                                System.out.println(entry.getLink());
+               
+                                System.out.println(entry.getTitle());
+               
+                                System.out.println(entry.getDescription().getValue());
+                 
+                                System.out.println(entry.getPublishedDate());
                     System.out.println("***********************************");
+                    System.out.println(entry);
                 }
                 System.out.println("Done");
             }

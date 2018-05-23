@@ -50,6 +50,9 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "alias_categoria")
     private String aliasCategoria;
+    @Size(min = 1, max = 255)
+    @Column(name = "resenia")
+    private String resenia;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorias", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "paginas")
@@ -89,6 +92,14 @@ public class Categoria implements Serializable {
 
     public void setAliasCategoria(String aliasCategoria) {
         this.aliasCategoria = aliasCategoria;
+    }
+
+    public String getResenia() {
+        return resenia;
+    }
+
+    public void setResenia(String resenia) {
+        this.resenia = resenia;
     }
 
     @XmlTransient
