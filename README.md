@@ -37,7 +37,7 @@ Al seleccionar tipo de recepción debe verificar su selección.
 Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a tu "tipo de recepción escogido", gracias por confiar en nosotros!"
 
 # Identificación de funciones del sitio
-###(y su implementación 'x'):
+### (y su implementación 'x'):
 - [ ] Login
 - [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
 - [x] Listado de subscripciones del usuario
