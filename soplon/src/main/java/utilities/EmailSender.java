@@ -1,4 +1,4 @@
-package services;
+package utilities;
 
 import dao.MetodoEnvioDao;
 import entities.MetodoEnvio;
@@ -10,13 +10,12 @@ import org.simplejavamail.mailer.MailerBuilder;
 import org.simplejavamail.mailer.config.TransportStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class MetodoEnvioService {
+@Component
+@Scope("application")
+public class EmailSender {
 
     @Autowired
     private MetodoEnvioDao metodoEnvioDao;
@@ -26,17 +25,14 @@ public class MetodoEnvioService {
         return metodoEnvioDao.getAllMetodoEnvio();
     }
 
-    public void SendMails(String user, String userMail, String tag, String titulo_pagina, String url_actualizada, String glosa_pagina, String date_new) throws IOException {
-         try {
+    public void sendMail(String user, String userMail, String message) throws IOException {
+        try {
 
             Email email = EmailBuilder.startingBlank()
                     .from("Soplon: Notificaciones de Entretencion", "soplonne@gmail.com")
                     .to(user, userMail)
-                    .withSubject("Nuevo contenido de "+tag)
-                    .withPlainText("Enhorabuena!, lo nuevo de "+titulo_pagina+" ya esta diponible en "+url_actualizada)
-                    .withPlainText("En detalle, se trata de "+glosa_pagina)
-                    .withPlainText("Esto fue subido al sitio en fecha "+date_new)
-                    .withPlainText("Esperamos disfrutes de este contenido")
+                    .withSubject("Nuevo contenido detectado")
+                    .withPlainText(message)
                     .buildEmail();
 
             MailerBuilder

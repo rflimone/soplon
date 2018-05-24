@@ -186,15 +186,18 @@ public class Pagina implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Pagina)) {
             return false;
         }
         Pagina other = (Pagina) object;
-        if ((this.idPaginas == null && other.idPaginas != null) || (this.idPaginas != null && !this.idPaginas.equals(other.idPaginas))) {
+
+        if (this.idPaginas == null || other.idPaginas == null) {
+            return false;
+        } else if (this.idPaginas.equals(other.idPaginas)) {
+            return true;
+        } else {
             return false;
         }
-        return true;
     }
 
     @Override

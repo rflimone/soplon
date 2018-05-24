@@ -68,10 +68,10 @@ public class Usuario implements Serializable {
     private short activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuarios", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "metodoEnvio")
-    private Set<MetodoEnvio> metodoEnvioSet;
+    private Set<MetodoEnvio> metodosDeEnvio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "subscripciones")
-    private Set<Subscripcion> subscripcionSet;
+    private Set<Subscripcion> subscripciones;
 
     public Usuario() {
     }
@@ -144,21 +144,21 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Set<MetodoEnvio> getMetodoEnvioSet() {
-        return metodoEnvioSet;
+    public Set<MetodoEnvio> getMetodosDeEnvio() {
+        return metodosDeEnvio;
     }
 
-    public void setMetodoEnvioSet(Set<MetodoEnvio> metodoEnvioSet) {
-        this.metodoEnvioSet = metodoEnvioSet;
+    public void setMetodosDeEnvio(Set<MetodoEnvio> metodosDeEnvio) {
+        this.metodosDeEnvio = metodosDeEnvio;
     }
 
     @XmlTransient
-    public Set<Subscripcion> getSubscripcionSet() {
-        return subscripcionSet;
+    public Set<Subscripcion> getSubscripciones() {
+        return subscripciones;
     }
 
-    public void setSubscripcionSet(Set<Subscripcion> subscripcionSet) {
-        this.subscripcionSet = subscripcionSet;
+    public void setSubscripciones(Set<Subscripcion> subscripciones) {
+        this.subscripciones = subscripciones;
     }
 
     @Override
