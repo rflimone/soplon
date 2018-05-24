@@ -4,8 +4,19 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
-import entities.*;
-import entities.Tag;
+import entities.Categoria;
+import entities.Pagina;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.similarity.JaroWinklerDistance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import services.CategoriaService;
+import services.PaginaService;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,18 +24,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
-import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import services.*;
 
 @Configuration
 @EnableScheduling
@@ -112,10 +111,16 @@ public class Application {
                         boolean encontrado = false;
                         for (Pagina pageValidation : paginaList) {
 
-                            if (pageValidation.getUrlUltimo().equals(entry.getLink()) ||
-                                    pageValidation.getUrlUltimo().toLowerCase().matches(entry.getUri())) {
+                            if (pageValidation.getUrlUltimo().equals(entry.getLink())) {
                                 encontrado = true;
                                 break;
+                            } else {
+                                JaroWinklerDistance algoritmoDistancia = new JaroWinklerDistance();
+                                Double distancia = algoritmoDistancia.apply(pageValidation.getUrlUltimo().toLowerCase(), entry.getLink().toLowerCase());
+                                if (distancia > 0.8) {
+                                    encontrado = true;
+                                    break;
+                                }
                             }
                         }
 
