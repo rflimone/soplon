@@ -36,17 +36,34 @@ Al seleccionar un contenido debe solicitar tipo de recepción (email o celular)
 Al seleccionar tipo de recepción debe verificar su selección.
 Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a tu "tipo de recepción escogido", gracias por confiar en nosotros!"
 
-# Identificación de funciones del sitio
-### (y su implementación 'x'):
-- [ ] Login **(Ponderación: 5%)** 
-- [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse) **(Ponderación:5%)**  
+# Backend (Completado en 75%)
+## (y su implementación 'x'):
+- [x] Login **(Ponderación: 5%)** 
+- [x] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse) **(Ponderación:5%)**  
 - [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente **(Ponderación:50%)** 
 	- [x] Busqueda de sitios pre-cargados
 	- [x] Inserción automática con categorización
 	- [x] Actualizacion de data
 - [x] Listado de subscripciones del usuario **(Ponderación:5%)**
 - [x] Selección de categorías **(Ponderación:5%)** 
-- [ ] Ranking de sitios web **(Ponderación:5%)**
+- [ ] Ranking de sitios web **(Ponderación:7,5%)**
+- [ ] Ranking de tag de contenidos **(Ponderación:7,5%)** 
+- [ ] selección de tipo de recepción **(Ponderación:15%)**
+	- [x] Mail
+	- [ ] SMS
+	- [ ] PUSH
+
+# Frontend (Completado en 65%)
+## (y su implementación 'x'):
+- [x] Diseño **(Ponderación: 20%)**
+- [X] Login **(Ponderación: 5%)** 
+- [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse) **(Ponderación:5%)**  
+- [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente **(Ponderación:30%)** 
+	- [x] Busqueda de sitios pre-cargados en BD
+	- [x] Actualizacion de data mostrada
+- [x] Listado de subscripciones del usuario **(Ponderación:5%)**
+- [x] Selección de categorías **(Ponderación:5%)** 
+- [ ] Ranking de sitios web **(Ponderación:7,5%)**
 - [ ] Ranking de tag de contenidos **(Ponderación:7,5%)** 
 - [ ] selección de tipo de recepción **(Ponderación:15%)**
 	- [x] Mail
