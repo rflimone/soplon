@@ -75,6 +75,25 @@ public class Application {
 //        }
 //    }
 
+    public Pagina existePagina(String currentUrl, List<Pagina> paginas) {
+        Pagina encontrado = null;
+        for (Pagina pagina : paginas) {
+
+            if (pagina.getUrlUltimo().toLowerCase().equals(currentUrl.toLowerCase())) {
+                encontrado = pagina;
+                break;
+            } else {
+                LevenshteinDistance algoritmoDistancia = new LevenshteinDistance();
+                Integer distancia = algoritmoDistancia.apply(pagina.getUrlUltimo().toLowerCase(), currentUrl.toLowerCase());
+                if (distancia/pagina.getUrlUltimo().length() > 0.8) {
+                    encontrado = pagina;
+                    break;
+                }
+            }
+        }
+        return encontrado;
+    }
+
     /**
      *
      * Método de insert será con un input de categoría humana, esto se realizará
@@ -107,23 +126,10 @@ public class Application {
                     SyndFeed feed = new SyndFeedInput().build(reader);
 
                     for (SyndEntry entry : feed.getEntries()) {
-                        boolean encontrado = false;
-                        for (Pagina pageValidation : paginaList) {
+                        Pagina encontradoBD = existePagina(entry.getLink(), paginaList);
+                        Pagina encontradoMemoria = existePagina(entry.getLink(), paginaInsertList);
 
-                            if (pageValidation.getUrlUltimo().equals(entry.getLink())) {
-                                encontrado = true;
-                                break;
-                            } else {
-                                LevenshteinDistance algoritmoDistancia = new LevenshteinDistance();
-                                Integer distancia = algoritmoDistancia.apply(pageValidation.getUrlUltimo().toLowerCase(), entry.getLink().toLowerCase());
-                                if (distancia/pageValidation.getUrlUltimo().length() > 0.8) {
-                                    encontrado = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (!encontrado) {
+                        if (encontradoBD == null && encontradoMemoria == null) {
                             
                             Date date = entry.getPublishedDate() != null ? entry.getPublishedDate() : entry.getUpdatedDate();
                             
@@ -173,20 +179,21 @@ public class Application {
                             System.out.println("***********************************");
                         } else {
                             Date date = entry.getPublishedDate() != null ? entry.getPublishedDate() : entry.getUpdatedDate();
-                            if (date.after(pagina.getDateNew())) {
+                            Pagina paginaToUpdate = encontradoBD == null ? encontradoMemoria : encontradoBD;
+                            if (date.after(paginaToUpdate.getDateNew())) {
                                 System.out.println(entry.getLink());
-                                pagina.setUrlUltimo(entry.getLink());
+                                paginaToUpdate.setUrlUltimo(entry.getLink());
 
                                 System.out.println(entry.getTitle());
-                                pagina.setTituloPagina(entry.getTitle());
+                                paginaToUpdate.setTituloPagina(entry.getTitle());
 
                                 System.out.println(entry.getDescription().getValue());
-                                pagina.setGlosaPagina(entry.getDescription().getValue());
+                                paginaToUpdate.setGlosaPagina(entry.getDescription().getValue());
 
-                                /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
+                                /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() paginaToUpdate.setTagSet(tagSet); */
                                 System.out.println(date);
-                                pagina.setDateLast(pagina.getDateNew());
-                                pagina.setDateNew(date);
+                                paginaToUpdate.setDateLast(paginaToUpdate.getDateNew());
+                                paginaToUpdate.setDateNew(date);
 
                                 System.out.println("***********************************");
                             }
