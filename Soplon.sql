@@ -53,13 +53,15 @@ CREATE TABLE `metodos_envio` (
   UNIQUE KEY `id_metodos_envio` (`id_metodos_envio`),
   KEY `FKMetodos_En279065` (`id_usuarios`),
   CONSTRAINT `FKMetodos_En279065` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`)
-) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `metodos_envio` */
 
 INSERT  INTO `metodos_envio`(`id_metodos_envio`,`glosa_metodo_envio`,`id_usuarios`,`id_subscripciones`) VALUES 
-(1,'email',1,1),
-(2,'push celular',1,1);
+(1,'Email',1,1),
+(2,'PUSH',1,2),
+(3,'SMS',1,3),
+(4,'Email',1,4);
 
 /*Table structure for table `paginas` */
 
