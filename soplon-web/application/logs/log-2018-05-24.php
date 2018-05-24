@@ -5573,3 +5573,315 @@ INFO - 2018-05-24 22:24:09 --> File loaded: C:\wamp64\www\soplon-web\application
 INFO - 2018-05-24 22:24:09 --> File loaded: C:\wamp64\www\soplon-web\application\views\includes/footer_view.php
 INFO - 2018-05-24 22:24:09 --> Final output sent to browser
 DEBUG - 2018-05-24 22:24:09 --> Total execution time: 0.0300
+INFO - 2018-05-24 23:19:20 --> Config Class Initialized
+INFO - 2018-05-24 23:19:20 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:19:20 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:19:20 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:19:20 --> URI Class Initialized
+DEBUG - 2018-05-24 23:19:20 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:19:20 --> Router Class Initialized
+INFO - 2018-05-24 23:19:20 --> Output Class Initialized
+INFO - 2018-05-24 23:19:20 --> Security Class Initialized
+DEBUG - 2018-05-24 23:19:20 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:19:20 --> Input Class Initialized
+INFO - 2018-05-24 23:19:20 --> Language Class Initialized
+INFO - 2018-05-24 23:19:20 --> Loader Class Initialized
+INFO - 2018-05-24 23:19:20 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:19:20 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:19:20 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:19:20 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:19:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:19:20 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:19:20 --> Controller Class Initialized
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:19:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:19:20 --> Final output sent to browser
+DEBUG - 2018-05-24 23:19:20 --> Total execution time: 0.0410
+INFO - 2018-05-24 23:19:29 --> Config Class Initialized
+INFO - 2018-05-24 23:19:29 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:19:29 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:19:29 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:19:29 --> URI Class Initialized
+DEBUG - 2018-05-24 23:19:29 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:19:29 --> Router Class Initialized
+INFO - 2018-05-24 23:19:29 --> Output Class Initialized
+INFO - 2018-05-24 23:19:29 --> Security Class Initialized
+DEBUG - 2018-05-24 23:19:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:19:29 --> Input Class Initialized
+INFO - 2018-05-24 23:19:29 --> Language Class Initialized
+INFO - 2018-05-24 23:19:29 --> Loader Class Initialized
+INFO - 2018-05-24 23:19:29 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:19:29 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:19:29 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:19:29 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:19:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:19:29 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:19:29 --> Controller Class Initialized
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:19:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:19:29 --> Final output sent to browser
+DEBUG - 2018-05-24 23:19:29 --> Total execution time: 0.0390
+INFO - 2018-05-24 23:19:43 --> Config Class Initialized
+INFO - 2018-05-24 23:19:43 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:19:43 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:19:43 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:19:43 --> URI Class Initialized
+INFO - 2018-05-24 23:19:43 --> Router Class Initialized
+INFO - 2018-05-24 23:19:43 --> Output Class Initialized
+INFO - 2018-05-24 23:19:43 --> Security Class Initialized
+DEBUG - 2018-05-24 23:19:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:19:43 --> Input Class Initialized
+INFO - 2018-05-24 23:19:43 --> Language Class Initialized
+INFO - 2018-05-24 23:19:43 --> Loader Class Initialized
+INFO - 2018-05-24 23:19:43 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:19:43 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:19:43 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:19:43 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:19:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:19:43 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:19:43 --> Controller Class Initialized
+INFO - 2018-05-24 23:19:43 --> Model Class Initialized
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/head_category.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/list_link_category.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/index.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:19:43 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:19:43 --> Final output sent to browser
+DEBUG - 2018-05-24 23:19:43 --> Total execution time: 0.0370
+INFO - 2018-05-24 23:19:50 --> Config Class Initialized
+INFO - 2018-05-24 23:19:50 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:19:50 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:19:50 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:19:50 --> URI Class Initialized
+INFO - 2018-05-24 23:19:50 --> Router Class Initialized
+INFO - 2018-05-24 23:19:50 --> Output Class Initialized
+INFO - 2018-05-24 23:19:50 --> Security Class Initialized
+DEBUG - 2018-05-24 23:19:50 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:19:50 --> Input Class Initialized
+INFO - 2018-05-24 23:19:50 --> Language Class Initialized
+INFO - 2018-05-24 23:19:50 --> Loader Class Initialized
+INFO - 2018-05-24 23:19:50 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:19:50 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:19:50 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:19:50 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:19:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:19:50 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:19:50 --> Controller Class Initialized
+INFO - 2018-05-24 23:19:50 --> Model Class Initialized
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/head_category.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/list_link_category.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/index.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:19:50 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:19:50 --> Final output sent to browser
+DEBUG - 2018-05-24 23:19:50 --> Total execution time: 0.0380
+INFO - 2018-05-24 23:26:39 --> Config Class Initialized
+INFO - 2018-05-24 23:26:39 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:26:39 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:26:39 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:26:39 --> URI Class Initialized
+DEBUG - 2018-05-24 23:26:39 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:26:39 --> Router Class Initialized
+INFO - 2018-05-24 23:26:39 --> Output Class Initialized
+INFO - 2018-05-24 23:26:39 --> Security Class Initialized
+DEBUG - 2018-05-24 23:26:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:26:39 --> Input Class Initialized
+INFO - 2018-05-24 23:26:39 --> Language Class Initialized
+INFO - 2018-05-24 23:26:39 --> Loader Class Initialized
+INFO - 2018-05-24 23:26:39 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:26:39 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:26:39 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:26:39 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:26:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:26:39 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:26:39 --> Controller Class Initialized
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:26:39 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:26:39 --> Final output sent to browser
+DEBUG - 2018-05-24 23:26:39 --> Total execution time: 0.0300
+INFO - 2018-05-24 23:38:29 --> Config Class Initialized
+INFO - 2018-05-24 23:38:29 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:38:29 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:38:29 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:38:29 --> URI Class Initialized
+DEBUG - 2018-05-24 23:38:29 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:38:29 --> Router Class Initialized
+INFO - 2018-05-24 23:38:29 --> Output Class Initialized
+INFO - 2018-05-24 23:38:29 --> Security Class Initialized
+DEBUG - 2018-05-24 23:38:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:38:29 --> Input Class Initialized
+INFO - 2018-05-24 23:38:29 --> Language Class Initialized
+INFO - 2018-05-24 23:38:29 --> Loader Class Initialized
+INFO - 2018-05-24 23:38:29 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:38:29 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:38:29 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:38:29 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:38:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:38:29 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:38:29 --> Controller Class Initialized
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:38:29 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:38:29 --> Final output sent to browser
+DEBUG - 2018-05-24 23:38:29 --> Total execution time: 0.0320
+INFO - 2018-05-24 23:38:36 --> Config Class Initialized
+INFO - 2018-05-24 23:38:36 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:38:36 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:38:36 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:38:36 --> URI Class Initialized
+DEBUG - 2018-05-24 23:38:36 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:38:36 --> Router Class Initialized
+INFO - 2018-05-24 23:38:36 --> Output Class Initialized
+INFO - 2018-05-24 23:38:36 --> Security Class Initialized
+DEBUG - 2018-05-24 23:38:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:38:36 --> Input Class Initialized
+INFO - 2018-05-24 23:38:36 --> Language Class Initialized
+INFO - 2018-05-24 23:38:36 --> Loader Class Initialized
+INFO - 2018-05-24 23:38:36 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:38:36 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:38:36 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:38:36 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:38:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:38:36 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:38:36 --> Controller Class Initialized
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:38:36 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:38:36 --> Final output sent to browser
+DEBUG - 2018-05-24 23:38:36 --> Total execution time: 0.0300
+INFO - 2018-05-24 23:38:49 --> Config Class Initialized
+INFO - 2018-05-24 23:38:49 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:38:49 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:38:49 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:38:49 --> URI Class Initialized
+DEBUG - 2018-05-24 23:38:49 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:38:49 --> Router Class Initialized
+INFO - 2018-05-24 23:38:49 --> Output Class Initialized
+INFO - 2018-05-24 23:38:49 --> Security Class Initialized
+DEBUG - 2018-05-24 23:38:49 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:38:49 --> Input Class Initialized
+INFO - 2018-05-24 23:38:49 --> Language Class Initialized
+INFO - 2018-05-24 23:38:49 --> Loader Class Initialized
+INFO - 2018-05-24 23:38:49 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:38:49 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:38:49 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:38:49 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:38:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:38:49 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:38:49 --> Controller Class Initialized
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:38:49 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:38:49 --> Final output sent to browser
+DEBUG - 2018-05-24 23:38:49 --> Total execution time: 0.0290
+INFO - 2018-05-24 23:39:17 --> Config Class Initialized
+INFO - 2018-05-24 23:39:17 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:39:17 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:39:17 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:39:17 --> URI Class Initialized
+DEBUG - 2018-05-24 23:39:17 --> No URI present. Default controller set.
+INFO - 2018-05-24 23:39:17 --> Router Class Initialized
+INFO - 2018-05-24 23:39:17 --> Output Class Initialized
+INFO - 2018-05-24 23:39:17 --> Security Class Initialized
+DEBUG - 2018-05-24 23:39:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:39:17 --> Input Class Initialized
+INFO - 2018-05-24 23:39:17 --> Language Class Initialized
+INFO - 2018-05-24 23:39:17 --> Loader Class Initialized
+INFO - 2018-05-24 23:39:17 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:39:17 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:39:17 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:39:17 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:39:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:39:17 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:39:17 --> Controller Class Initialized
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/components/categories.php
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\home/index.php
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:39:17 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:39:17 --> Final output sent to browser
+DEBUG - 2018-05-24 23:39:17 --> Total execution time: 0.0310
+INFO - 2018-05-24 23:39:20 --> Config Class Initialized
+INFO - 2018-05-24 23:39:20 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:39:20 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:39:20 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:39:20 --> URI Class Initialized
+INFO - 2018-05-24 23:39:20 --> Router Class Initialized
+INFO - 2018-05-24 23:39:20 --> Output Class Initialized
+INFO - 2018-05-24 23:39:20 --> Security Class Initialized
+DEBUG - 2018-05-24 23:39:20 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:39:20 --> Input Class Initialized
+INFO - 2018-05-24 23:39:20 --> Language Class Initialized
+INFO - 2018-05-24 23:39:20 --> Loader Class Initialized
+INFO - 2018-05-24 23:39:20 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:39:20 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:39:20 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:39:20 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:39:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:39:20 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:39:20 --> Controller Class Initialized
+INFO - 2018-05-24 23:39:20 --> Model Class Initialized
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/head_category.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/list_link_category.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/index.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:39:20 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:39:20 --> Final output sent to browser
+DEBUG - 2018-05-24 23:39:20 --> Total execution time: 0.0350
+INFO - 2018-05-24 23:39:39 --> Config Class Initialized
+INFO - 2018-05-24 23:39:39 --> Hooks Class Initialized
+DEBUG - 2018-05-24 23:39:39 --> UTF-8 Support Enabled
+INFO - 2018-05-24 23:39:39 --> Utf8 Class Initialized
+INFO - 2018-05-24 23:39:39 --> URI Class Initialized
+INFO - 2018-05-24 23:39:39 --> Router Class Initialized
+INFO - 2018-05-24 23:39:39 --> Output Class Initialized
+INFO - 2018-05-24 23:39:39 --> Security Class Initialized
+DEBUG - 2018-05-24 23:39:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2018-05-24 23:39:39 --> Input Class Initialized
+INFO - 2018-05-24 23:39:39 --> Language Class Initialized
+INFO - 2018-05-24 23:39:39 --> Loader Class Initialized
+INFO - 2018-05-24 23:39:39 --> Helper loaded: http_codes_helper
+INFO - 2018-05-24 23:39:39 --> Helper loaded: global_functions_helper
+INFO - 2018-05-24 23:39:40 --> Helper loaded: url_helper
+INFO - 2018-05-24 23:39:40 --> Database Driver Class Initialized
+DEBUG - 2018-05-24 23:39:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2018-05-24 23:39:40 --> Session: Class initialized using 'files' driver.
+INFO - 2018-05-24 23:39:40 --> Controller Class Initialized
+INFO - 2018-05-24 23:39:40 --> Model Class Initialized
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/head.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/nav.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/head_category.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/components/list_link_category.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\category/index.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\login/index.php
+INFO - 2018-05-24 23:39:40 --> File loaded: C:\wamp64\www\soplon\soplon-web\application\views\includes/footer_view.php
+INFO - 2018-05-24 23:39:40 --> Final output sent to browser
+DEBUG - 2018-05-24 23:39:40 --> Total execution time: 0.0360
