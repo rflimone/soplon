@@ -38,17 +38,17 @@ Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a 
 
 # Identificación de funciones del sitio
 ### (y su implementación 'x'):
-5%  - [ ] Login
-5%  - [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse)
-50% - [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente
+- [ ] Login **(Ponderación: 5%)** 
+- [ ] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse) **(Ponderación:5%)**  
+- [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente **(Ponderación:50%)** 
 	- [x] Busqueda de sitios pre-cargados
 	- [x] Inserción automática con categorización
 	- [x] Actualizacion de data
-5% - [x] Listado de subscripciones del usuario
-5% - [x] Selección de categorías
-7,5% - [ ] Ranking de sitios web 
-7,5% - [ ] Ranking de tag de contenidos 
-15% - [ ] selección de tipo de recepción 
+- [x] Listado de subscripciones del usuario **(Ponderación:5%)**
+- [x] Selección de categorías **(Ponderación:5%)** 
+- [ ] Ranking de sitios web **(Ponderación:5%)**
+- [ ] Ranking de tag de contenidos **(Ponderación:7,5%)** 
+- [ ] selección de tipo de recepción **(Ponderación:15%)**
 	- [x] Mail
 	- [ ] SMS
 	- [ ] PUSH
