@@ -6,8 +6,7 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import entities.Categoria;
 import entities.Pagina;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.text.similarity.JaroWinklerDistance;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -115,9 +114,9 @@ public class Application {
                                 encontrado = true;
                                 break;
                             } else {
-                                JaroWinklerDistance algoritmoDistancia = new JaroWinklerDistance();
-                                Double distancia = algoritmoDistancia.apply(pageValidation.getUrlUltimo().toLowerCase(), entry.getLink().toLowerCase());
-                                if (distancia > 0.8) {
+                                LevenshteinDistance algoritmoDistancia = new LevenshteinDistance();
+                                Integer distancia = algoritmoDistancia.apply(pageValidation.getUrlUltimo().toLowerCase(), entry.getLink().toLowerCase());
+                                if (distancia/pageValidation.getUrlUltimo().length() > 0.8) {
                                     encontrado = true;
                                     break;
                                 }
