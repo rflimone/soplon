@@ -1,0 +1,27 @@
+nav {
+  height: 120px !important;
+  box-shadow: none !important;
+}
+.brand-logo{
+  padding-top: 10px !important;
+}
+.categories-bg{
+  padding: 15vh 0;
+  background: #FDCB6E;
+}
+.title-large{
+  font-size: 2.5em;
+}
+.title-medium{
+  font-size: 2em;
+  font-weight: 300;
+}
+.categories2-bg{
+
+    padding: 15vh 0;
+}
+.user-nav{
+  margin-top: 25px !important;
+   margin-right: 50px !important;
+
+}
