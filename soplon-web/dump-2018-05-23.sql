@@ -84,7 +84,7 @@ CREATE TABLE `paginas` (
   `glosa_pagina` varchar(255) DEFAULT NULL,
   `date_last` datetime DEFAULT NULL,
   `date_new` datetime DEFAULT NULL,
-  `imagen` blob,
+  `imagen` varchar(255) DEFAULT NULL,
   `id_categorias` int(11) NOT NULL,
   PRIMARY KEY (`id_paginas`),
   UNIQUE KEY `id_paginas` (`id_paginas`),

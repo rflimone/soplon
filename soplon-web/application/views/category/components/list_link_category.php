@@ -12,12 +12,14 @@
 
             // seteo de variables
             $title_page = $link['titulo_pagina'] ? ucfirst($link['titulo_pagina']) : '';
+            $img_page = $link['imagen'] ? ucfirst($link['imagen']) : '';
             $uri_page = $link['url_ultimo'] ? $link['url_ultimo'] : '#';
             $glosa_page = $link['glosa_pagina'] ? ucfirst($link['glosa_pagina']) : 'Descripción no disponible';
 
           ?>
           <div class="card-panel white lighten-2">
             <b><?= $title_page ?></b><br>
+            <?= $img_page ?>
             <?= $glosa_page ?>
             <a href="<?= $uri_page ?>" target="_blank" class="text-justify">
               &nbsp; <i>ver última entrada</i>
@@ -26,7 +28,7 @@
             <?php
             if($this->session->userdata('nombres')){
             ?>
-            <a class="btn blue waves-effect waves-light modal-trigger" href="#notificationModal" onclick="showNotification('<?= $glosa_page ?>', '<?= $uri_page ?>', <?= $link['id_paginas'] ?>)">Notificame</a>
+            <a class="btn blue waves-effect waves-light modal-trigger" href="#notificationModal" onclick="showNotification('<?= $title_page ?>', '<?= $uri_page ?>', <?= $link['id_paginas'] ?>)">Notificame</a>
             <?php
           }else{
             ?>
@@ -68,7 +70,7 @@
           <br>
           <p>
             <input type="checkbox" id="emailNoti" name="email" />
-            <label for="emailNoti">Email</label>
+            <label for="emailNoti">EMAIL</label>
           </p>
           <p>
             <input type="checkbox" id="smsNoti" name="sms" />

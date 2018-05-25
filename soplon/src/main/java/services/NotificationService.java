@@ -46,6 +46,7 @@ public class NotificationService {
             //Aca esta fallando, ya que se necesita identificar el metodo de envio, pero solo podemos obtener la subscripcion.
 //            if (user.getSubscripciones().equals("Email")) {
 //                emailSender.sendMail(user.getNombres(), user.getEmail(), builder.toString());
+//            NO DESCOMENTAR EL IF DE SMS, GASTA $$$
 //            } else if (user.getSubscripciones().equals("SMS")) {
 //                smsSender.sendSms(user.getNombres(), user.getCelular(), builder.toString());
 //            } else if (user.getSubscripciones().equals("PUSH")) {

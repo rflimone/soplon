@@ -78,16 +78,15 @@ public class PageReader {
 
                             System.out.println(entry.getTitle());
                             p.setTituloPagina(entry.getTitle());
-                            
-                            if(entry.getDescription().getValue().contains("img")){
-                                System.out.println(entry.getDescription().getValue());
-                                p.setGlosaPagina(entry.getDescription().getValue());
-                            }else{
+
+                            if (entry.getDescription().getValue().contains("img")) {
                                 System.out.println(entry.getDescription().getValue());
                                 p.setImagen(entry.getDescription().getValue());
+
+                            } else {
+                                System.out.println(entry.getDescription().getValue());
+                                p.setGlosaPagina(entry.getDescription().getValue());
                             }
-                            
-                            
 
                             /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                             System.out.println(date);
