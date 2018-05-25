@@ -2,7 +2,6 @@ package dao;
 
 import entities.*;
 import java.util.List;
-import javafx.scene.paint.Color;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
