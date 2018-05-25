@@ -19,9 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Scope("application")
 public class SmsSender {
     // Find your Account Sid and Token at twilio.com/user/account
-
-    private static final String ACCOUNT_SID = "AC71623ceb3b800896ae352d55fd05f76e";
-    private static final String AUTH_TOKEN = "45fcfd24b802a4d79901a20ae650641e";
+    // Pedir estos datos a Renzo, que dejarlos aca son robables en github publico
+    private static final String ACCOUNT_SID = ""; 
+    private static final String AUTH_TOKEN = "";
 
     @Autowired
     private MetodoEnvioDao metodoEnvioDao;
