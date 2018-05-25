@@ -61,7 +61,14 @@ public class PageReader {
 
                         if (encontradoBD == null && encontradoMemoria == null) {
 
-                            Date date = entry.getPublishedDate() != null ? entry.getPublishedDate() : entry.getUpdatedDate();
+                            Date date;
+                            if (entry.getPublishedDate() != null) {
+                                date = entry.getPublishedDate();
+                            } else if (entry.getUpdatedDate() != null) {
+                                date = entry.getUpdatedDate();
+                            } else {
+                                date = new Date();
+                            }
 
                             Pagina p = new Pagina();
 
@@ -71,9 +78,16 @@ public class PageReader {
 
                             System.out.println(entry.getTitle());
                             p.setTituloPagina(entry.getTitle());
-
-                            System.out.println(entry.getDescription().getValue());
-                            p.setGlosaPagina(entry.getDescription().getValue());
+                            
+                            if(entry.getDescription().getValue().contains("img")){
+                                System.out.println(entry.getDescription().getValue());
+                                p.setGlosaPagina(entry.getDescription().getValue());
+                            }else{
+                                System.out.println(entry.getDescription().getValue());
+                                p.setImagen(entry.getDescription().getValue());
+                            }
+                            
+                            
 
                             /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                             System.out.println(date);
@@ -108,7 +122,14 @@ public class PageReader {
 
                             System.out.println("***********************************");
                         } else {
-                            Date date = entry.getPublishedDate() != null ? entry.getPublishedDate() : entry.getUpdatedDate();
+                            Date date;
+                            if (entry.getPublishedDate() != null) {
+                                date = entry.getPublishedDate();
+                            } else if (entry.getUpdatedDate() != null) {
+                                date = entry.getUpdatedDate();
+                            } else {
+                                date = new Date();
+                            }
                             Pagina paginaToUpdate = encontradoBD == null ? encontradoMemoria : encontradoBD;
                             if (date.after(paginaToUpdate.getDateNew())) {
                                 System.out.println(entry.getLink());

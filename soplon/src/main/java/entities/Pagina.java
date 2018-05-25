@@ -66,9 +66,10 @@ public class Pagina implements Serializable {
     @Column(name = "date_new")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNew;
-    @Lob
+    @Size(max = 255)
     @Column(name = "imagen")
-    private byte[] imagen;
+    private String imagen;
+
     @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "tags")
     private Set<Tag> tagSet;
@@ -143,11 +144,11 @@ public class Pagina implements Serializable {
         this.dateNew = dateNew;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
