@@ -9,9 +9,12 @@ import entities.Pagina;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import entities.Tag;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -61,14 +64,7 @@ public class PageReader {
 
                         if (encontradoBD == null && encontradoMemoria == null) {
 
-                            Date date;
-                            if (entry.getPublishedDate() != null) {
-                                date = entry.getPublishedDate();
-                            } else if (entry.getUpdatedDate() != null) {
-                                date = entry.getUpdatedDate();
-                            } else {
-                                date = new Date();
-                            }
+                            Date date = getLastUpdate(entry);
 
                             Pagina p = new Pagina();
 
@@ -89,6 +85,13 @@ public class PageReader {
                             }
 
                             /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
+                            String tagText = extractTag(entry.getTitle());
+                            Tag tag = new Tag();
+                            tag.setGlosaTag(tagText);
+                            tag.setPagina(p);
+                            p.setTagSet(new HashSet<>());
+                            p.getTagSet().add(tag);
+
                             System.out.println(date);
                             p.setDateNew(date);
 
@@ -121,14 +124,7 @@ public class PageReader {
 
                             System.out.println("***********************************");
                         } else {
-                            Date date;
-                            if (entry.getPublishedDate() != null) {
-                                date = entry.getPublishedDate();
-                            } else if (entry.getUpdatedDate() != null) {
-                                date = entry.getUpdatedDate();
-                            } else {
-                                date = new Date();
-                            }
+                            Date date = getLastUpdate(entry);
                             Pagina paginaToUpdate = encontradoBD == null ? encontradoMemoria : encontradoBD;
                             if (date.after(paginaToUpdate.getDateNew())) {
                                 System.out.println(entry.getLink());
@@ -163,6 +159,10 @@ public class PageReader {
         }
     }
 
+    private String extractTag(String title) {
+        return title.replaceAll("([\\.\\w áéíóúÁÉÍÓÚ']+).*", "$1").replaceAll(" ", "_");
+    }
+
     private Pagina pageExists(String url, List<Pagina> paginas) {
         Pagina encontrado = null;
         for (Pagina pagina : paginas) {
@@ -180,5 +180,17 @@ public class PageReader {
             }
         }
         return encontrado;
+    }
+
+    private Date getLastUpdate(SyndEntry entry) {
+        Date date;
+        if (entry.getPublishedDate() != null) {
+            date = entry.getPublishedDate();
+        } else if (entry.getUpdatedDate() != null) {
+            date = entry.getUpdatedDate();
+        } else {
+            date = new Date();
+        }
+        return date;
     }
 }
