@@ -2,6 +2,7 @@ package scheduled;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import entities.Categoria;
@@ -15,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import entities.Tag;
+import java.io.IOException;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -55,7 +57,9 @@ public class PageReader {
                 if (!pagina.getUrl().contains("rss") && !pagina.getUrl().contains("feed")) {
                     continue;
                 }
-                try (XmlReader reader = new XmlReader(new URL(pagina.getUrl()))) {
+                try {
+                    XmlReader reader = new XmlReader(new URL(pagina.getUrl()));
+
                     SyndFeed feed = new SyndFeedInput().build(reader);
 
                     for (SyndEntry entry : feed.getEntries()) {
@@ -149,14 +153,17 @@ public class PageReader {
                             }
                         }
                     }
+                } catch (FeedException | IOException | IllegalArgumentException e) {
+                    e.printStackTrace();
                 }
+                paginaService.insertPaginas(paginaInsertList);
+                paginaService.updatePaginas(paginaUpdateList);
+                notificationService.lookForNotifications(paginaUpdateList);
             }
-            paginaService.insertPaginas(paginaInsertList);
-            paginaService.updatePaginas(paginaUpdateList);
-            notificationService.lookForNotifications(paginaUpdateList);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     private String extractTag(String title) {
