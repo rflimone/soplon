@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.155.83.79/';
+$config['base_url'] = 'http://localhost/soplon/soplon-web/';
 $config['name_app'] = 'Soplón';
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['name_app'] = 'Soplón';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
