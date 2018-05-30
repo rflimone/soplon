@@ -10,22 +10,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.UUID;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -69,7 +55,7 @@ public class Pagina implements Serializable {
     @Column(name = "imagen")
     private String imagen;
 
-    @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "paginas", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JsonManagedReference(value = "tags")
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")
@@ -193,11 +179,8 @@ public class Pagina implements Serializable {
 
         if (this.idPaginas == null || other.idPaginas == null) {
             return false;
-        } else if (this.idPaginas.equals(other.idPaginas)) {
-            return true;
-        } else {
-            return false;
         }
+        return this.idPaginas.equals(other.idPaginas);
     }
 
     @Override

@@ -7,36 +7,27 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.io.Serializable;
-import java.util.Set;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import org.apache.commons.lang3.RandomUtils;
+
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 /**
- *
  * @author rlimone
  */
 @Entity
 @Table(name = "tags")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tag.findAll", query = "SELECT t FROM Tag t")})
+        @NamedQuery(name = "Tag.findAll", query = "SELECT t FROM Tag t"),
+        @NamedQuery(name = "Tag.findByGlosa", query = "SELECT t FROM Tag t WHERE UPPER(t.glosaTag) = UPPER(:glosa) ")
+})
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,11 +40,11 @@ public class Tag implements Serializable {
     @Column(name = "glosa_tag")
     private String glosaTag;
     @JoinTable(name = "tags_paginas", joinColumns = {
-        @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")})
-    @ManyToOne(fetch = FetchType.LAZY)
+            @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")}, inverseJoinColumns = {
+            @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
     @JsonBackReference(value = "tags")
-    private Pagina pagina;
+    private List<Pagina> paginas;
     @OneToMany(mappedBy = "idTags", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "tags")
     private Set<Subscripcion> subscripcionSet;
@@ -81,12 +72,12 @@ public class Tag implements Serializable {
         this.glosaTag = glosaTag;
     }
 
-    public Pagina getPagina() {
-        return pagina;
+    public List<Pagina> getPaginas() {
+        return paginas;
     }
 
-    public void setPagina(Pagina pagina) {
-        this.pagina = pagina;
+    public void setPaginas(List<Pagina> paginas) {
+        this.paginas = paginas;
     }
 
     @XmlTransient
@@ -114,13 +105,14 @@ public class Tag implements Serializable {
         if (this.idTags == null || other.idTags == null) {
             return false;
         }
-
         return this.idTags.equals(other.idTags);
     }
 
     @Override
     public String toString() {
-        return "mariadb.Tag[ idTags=" + idTags + " ]";
+        return "Tag{" +
+                "idTags=" + idTags +
+                ", glosaTag='" + glosaTag + '\'' +
+                '}';
     }
-
 }

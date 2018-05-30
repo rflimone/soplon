@@ -30,4 +30,26 @@ public class TagService {
         tagDao.insertTag(tag);
     }
 
+    @Transactional(readOnly = true)
+    public Tag findByGlosa(String glosa) {
+        return  tagDao.findByGlosa(glosa);
+    }
+
+    @Transactional(readOnly = true)
+    public Tag findWithPaginas(String glosa) {
+        return  tagDao.findWithPaginas(glosa);
+    }
+
+    @Transactional(readOnly = false)
+    public Tag save(Tag tag) {
+        return tagDao.save(tag);
+    }
+
+    public Tag findWithPaginas(Integer id) {
+        return  tagDao.findWithPaginas(id);
+    }
+
+    public List<Tag> findWithPaginas() {
+        return tagDao.findWithPaginas();
+    }
 }

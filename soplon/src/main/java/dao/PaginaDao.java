@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -29,23 +31,7 @@ public class PaginaDao {
         return q.getResultList();
     }
 
-    public void insertPagina(Pagina pagina) {
-        em.persist(pagina);
-    }
-
-    public void insertPaginas(List<Pagina> paginaList) {
-        for (Pagina pagina : paginaList) {
-            em.persist(pagina);
-        }
-    }
-
-    public Pagina updatePagina(Pagina pagina) {
+    public Pagina savePagina(Pagina pagina) {
         return em.merge(pagina);
-    }
-
-    public void updatePaginas(List<Pagina> paginaList) {
-        for (Pagina pagina : paginaList) {
-            em.merge(pagina);
-        }
     }
 }

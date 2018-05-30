@@ -28,22 +28,26 @@ public class PaginaService {
 
     @Transactional
     public void insertPagina(Pagina pagina) {
-        paginaDao.insertPagina(pagina);
+        paginaDao.savePagina(pagina);
     }
 
     @Transactional
     public void insertPaginas(List<Pagina> paginaList) {
-        paginaDao.insertPaginas(paginaList);
+        paginaList.forEach(pagina -> {
+            paginaDao.savePagina(pagina);
+        });
     }
 
     @Transactional
     public void updatePagina(Pagina pagina) {
-        paginaDao.updatePagina(pagina);
+        paginaDao.savePagina(pagina);
     }
 
     @Transactional
     public void updatePaginas(List<Pagina> paginaList) {
-        paginaDao.updatePaginas(paginaList);
+        paginaList.forEach(pagina -> {
+            paginaDao.savePagina(pagina);
+        });
     }
 
 }

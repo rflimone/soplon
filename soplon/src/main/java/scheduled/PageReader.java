@@ -18,12 +18,15 @@ import java.util.regex.Pattern;
 import entities.Tag;
 import java.io.IOException;
 import org.apache.commons.text.similarity.LevenshteinDistance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import services.CategoriaService;
 import services.NotificationService;
 import services.PaginaService;
+import services.TagService;
 
 /**
  *
@@ -31,6 +34,7 @@ import services.PaginaService;
  */
 @Component
 public class PageReader {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private PaginaService paginaService;
@@ -41,6 +45,9 @@ public class PageReader {
     @Autowired
     private NotificationService notificationService;
 
+    @Autowired
+    private TagService tagService;
+
     @Scheduled(fixedDelay = 40000)
     public void lookForUpdates() {
         try {
@@ -50,6 +57,7 @@ public class PageReader {
             List<Pagina> paginaInsertList = new ArrayList<>();
             /* Se utiliza para array de actualizacion de sitios*/
             List<Pagina> paginaUpdateList = new ArrayList<>();
+            List<Tag> tags = tagService.findWithPaginas();
             /* Lista de las categorias del sistema*/
             List<Categoria> catList = categoriaService.getCategorias();
 
@@ -90,10 +98,19 @@ public class PageReader {
 
                             /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                             String tagText = extractTag(entry.getTitle());
-                            Tag tag = new Tag();
-                            System.out.println("Tag: " + tagText);
-                            tag.setGlosaTag(tagText);
-                            tag.setPagina(p);
+
+                            Tag tag = tagExists(tagText, tags);
+
+                            if (tag == null) {
+                                tag = new Tag();
+                                tag.setGlosaTag(tagText);
+                                tag = tagService.save(tag);
+                                tag = tagService.findWithPaginas(tag.getIdTags());
+                                tags.add(tag);
+                            }
+                            if (tag.getPaginas() == null) tag.setPaginas(new ArrayList<>());
+                            tag.getPaginas().add(p);
+
                             p.setTagSet(new HashSet<>());
                             p.getTagSet().add(tag);
 
@@ -179,7 +196,8 @@ public class PageReader {
     }
 
     private String extractTag(String title) {
-        return title.replaceAll("([\\.a-zA-Z áéíóúÁÉÍÓÚ']+).*", "$1").trim().replaceAll("[ ]+", "_");
+        title = title.replaceAll("([\\.a-zA-Z áéíóúÁÉÍÓÚ'-]+).*", "$1").trim().replaceAll("[ ]+", "_");
+        return title.replaceAll("(.*?)(_-|_Chapter)$", "$1");
     }
 
     private Pagina pageExists(String url, List<Pagina> paginas) {
@@ -194,6 +212,25 @@ public class PageReader {
                 double distancia = algoritmoDistancia.apply(pagina.getUrlUltimo().toLowerCase(), url.toLowerCase());
                 if (distancia / pagina.getUrlUltimo().length() <= 0.2) {
                     encontrado = pagina;
+                    break;
+                }
+            }
+        }
+        return encontrado;
+    }
+
+    private Tag tagExists(String glosa, List<Tag> tags) {
+        Tag encontrado = null;
+        for (Tag tag : tags) {
+
+            if (tag.getGlosaTag().toLowerCase().equals(glosa.toLowerCase())) {
+                encontrado = tag;
+                break;
+            } else {
+                LevenshteinDistance algoritmoDistancia = new LevenshteinDistance();
+                double distancia = algoritmoDistancia.apply(tag.getGlosaTag().toLowerCase(), glosa.toLowerCase());
+                if (distancia / tag.getGlosaTag().length() <= 0.2) {
+                    encontrado = tag;
                     break;
                 }
             }
