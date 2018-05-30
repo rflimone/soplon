@@ -19,7 +19,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -70,7 +69,7 @@ public class Pagina implements Serializable {
     @Column(name = "imagen")
     private String imagen;
 
-    @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JsonManagedReference(value = "tags")
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")

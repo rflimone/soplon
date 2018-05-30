@@ -54,7 +54,7 @@ public class Categoria implements Serializable {
     @Column(name = "resenia")
     private String resenia;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategorias", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idCategorias", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "paginas")
     private Set<Pagina> paginaSet;
 
@@ -120,15 +120,15 @@ public class Categoria implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Categoria)) {
             return false;
         }
         Categoria other = (Categoria) object;
-        if ((this.idCategorias == null && other.idCategorias != null) || (this.idCategorias != null && !this.idCategorias.equals(other.idCategorias))) {
+        if (this.idCategorias == null || other.idCategorias == null) {
             return false;
         }
-        return true;
+
+        return this.idCategorias.equals(other.idCategorias);
     }
 
     @Override

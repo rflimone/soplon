@@ -170,15 +170,15 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Usuario)) {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.idUsuarios == null && other.idUsuarios != null) || (this.idUsuarios != null && !this.idUsuarios.equals(other.idUsuarios))) {
+        if (this.idUsuarios == null || other.idUsuarios == null) {
             return false;
         }
-        return true;
+
+        return this.idUsuarios.equals(other.idUsuarios);
     }
 
     @Override

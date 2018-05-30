@@ -96,20 +96,20 @@ public class Subscripcion implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Subscripcion)) {
             return false;
         }
         Subscripcion other = (Subscripcion) object;
-        if ((this.subscripcionPK == null && other.subscripcionPK != null) || (this.subscripcionPK != null && !this.subscripcionPK.equals(other.subscripcionPK))) {
+        if (this.subscripcionPK == null || other.subscripcionPK == null) {
             return false;
         }
-        return true;
+
+        return this.subscripcionPK.equals(other.subscripcionPK);
     }
 
     @Override
     public String toString() {
         return "mariadb.Subscripcion[ subscripcionPK=" + subscripcionPK + " ]";
     }
-    
+
 }

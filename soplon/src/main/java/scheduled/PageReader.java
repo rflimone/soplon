@@ -67,40 +67,42 @@ public class PageReader {
                         Pagina encontradoMemoria = pageExists(entry.getLink(), paginaInsertList);
 
                         if (encontradoBD == null && encontradoMemoria == null) {
-
+                            System.out.println("REGISTRO DE INSERT");
                             Date date = getLastUpdate(entry);
 
                             Pagina p = new Pagina();
+                            p.setSubscripcionSet(null);
 
-                            System.out.println(entry.getLink());
-
+                            System.out.println("Link: " + entry.getLink());
                             p.setUrlUltimo(entry.getLink());
 
-                            System.out.println(entry.getTitle());
+                            System.out.println("Título: " + entry.getTitle());
                             p.setTituloPagina(entry.getTitle());
 
                             if (entry.getDescription().getValue().contains("img")) {
-                                System.out.println(entry.getDescription().getValue());
+                                System.out.println("Imágen: " + entry.getDescription().getValue());
                                 p.setImagen(entry.getDescription().getValue());
 
                             } else {
-                                System.out.println(entry.getDescription().getValue());
+                                System.out.println("Descripción: " + entry.getDescription().getValue());
                                 p.setGlosaPagina(entry.getDescription().getValue());
                             }
 
                             /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                             String tagText = extractTag(entry.getTitle());
                             Tag tag = new Tag();
+                            System.out.println("Tag: " + tagText);
                             tag.setGlosaTag(tagText);
                             tag.setPagina(p);
                             p.setTagSet(new HashSet<>());
                             p.getTagSet().add(tag);
 
-                            System.out.println(date);
+                            System.out.println("Fecha nueva: " + date);
                             p.setDateNew(date);
 
                             p.setUrl(pagina.getUrl());
 
+                            Categoria c = new Categoria();
                             for (Categoria categoria : catList) {
                                 StringBuilder regex = new StringBuilder();
                                 if (categoria.getGlosaCategoria().contains(" ")) {
@@ -117,12 +119,14 @@ public class PageReader {
                                 Pattern pattern = Pattern.compile(regex.toString().toLowerCase());
                                 Matcher matcher = pattern.matcher(entry.getLink());
                                 if (matcher.find()) {
-                                    p.setIdCategorias(categoria);
+                                    c.setIdCategorias(categoria.getIdCategorias());
+                                    p.setIdCategorias(c);
                                 }
                             }
 
                             if (p.getIdCategorias() == null) {
-                                p.setIdCategorias(pagina.getIdCategorias());
+                                c.setIdCategorias(pagina.getIdCategorias().getIdCategorias());
+                                p.setIdCategorias(c);
                             }
                             paginaInsertList.add(p);
 
@@ -131,17 +135,25 @@ public class PageReader {
                             Date date = getLastUpdate(entry);
                             Pagina paginaToUpdate = encontradoBD == null ? encontradoMemoria : encontradoBD;
                             if (date.after(paginaToUpdate.getDateNew())) {
-                                System.out.println(entry.getLink());
+                                System.out.println("REGISTRO DE UPDATE");
+                                System.out.println("Link: " + entry.getLink());
                                 paginaToUpdate.setUrlUltimo(entry.getLink());
 
-                                System.out.println(entry.getTitle());
+                                System.out.println("Título: " + entry.getTitle());
                                 paginaToUpdate.setTituloPagina(entry.getTitle());
 
-                                System.out.println(entry.getDescription().getValue());
-                                paginaToUpdate.setGlosaPagina(entry.getDescription().getValue());
+                                if (entry.getDescription().getValue().contains("img")) {
+                                    System.out.println("Imágen: " + entry.getDescription().getValue());
+                                    paginaToUpdate.setImagen(entry.getDescription().getValue());
+
+                                } else {
+                                    System.out.println("Descripción: " + entry.getDescription().getValue());
+                                    paginaToUpdate.setGlosaPagina(entry.getDescription().getValue());
+                                }
 
                                 /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() paginaToUpdate.setTagSet(tagSet); */
-                                System.out.println(date);
+                                System.out.println("Fecha nueva: " + date);
+                                System.out.println("Fecha anterior: " + paginaToUpdate.getDateNew());
                                 paginaToUpdate.setDateLast(paginaToUpdate.getDateNew());
                                 paginaToUpdate.setDateNew(date);
 
@@ -167,7 +179,7 @@ public class PageReader {
     }
 
     private String extractTag(String title) {
-        return title.replaceAll("([\\.\\w áéíóúÁÉÍÓÚ']+).*", "$1").replaceAll(" ", "_");
+        return title.replaceAll("([\\.a-zA-Z áéíóúÁÉÍÓÚ']+).*", "$1").trim().replaceAll("[ ]+", "_");
     }
 
     private Pagina pageExists(String url, List<Pagina> paginas) {

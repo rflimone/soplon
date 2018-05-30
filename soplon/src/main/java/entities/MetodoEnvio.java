@@ -87,20 +87,20 @@ public class MetodoEnvio implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof MetodoEnvio)) {
             return false;
         }
         MetodoEnvio other = (MetodoEnvio) object;
-        if ((this.idMetodosEnvio == null && other.idMetodosEnvio != null) || (this.idMetodosEnvio != null && !this.idMetodosEnvio.equals(other.idMetodosEnvio))) {
+        if (this.idMetodosEnvio == null || other.idMetodosEnvio == null) {
             return false;
         }
-        return true;
+
+        return this.idMetodosEnvio.equals(other.idMetodosEnvio);
     }
 
     @Override
     public String toString() {
         return "mariadb.MetodoEnvio[ idMetodosEnvio=" + idMetodosEnvio + " ]";
     }
-    
+
 }

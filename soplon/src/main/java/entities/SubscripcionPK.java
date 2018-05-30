@@ -75,7 +75,6 @@ public class SubscripcionPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof SubscripcionPK)) {
             return false;
         }
@@ -89,6 +88,7 @@ public class SubscripcionPK implements Serializable {
         if (this.idPaginas != other.idPaginas) {
             return false;
         }
+
         return true;
     }
 
@@ -96,5 +96,5 @@ public class SubscripcionPK implements Serializable {
     public String toString() {
         return "mariadb.SubscripcionPK[ idSubscripciones=" + idSubscripciones + ", idUsuarios=" + idUsuarios + ", idPaginas=" + idPaginas + " ]";
     }
-    
+
 }

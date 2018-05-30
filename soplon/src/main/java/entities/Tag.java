@@ -54,7 +54,7 @@ public class Tag implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference(value = "tags")
     private Pagina pagina;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTags", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idTags", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "tags")
     private Set<Subscripcion> subscripcionSet;
 
@@ -107,15 +107,15 @@ public class Tag implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Tag)) {
             return false;
         }
         Tag other = (Tag) object;
-        if ((this.idTags == null && other.idTags != null) || (this.idTags != null && !this.idTags.equals(other.idTags))) {
+        if (this.idTags == null || other.idTags == null) {
             return false;
         }
-        return true;
+
+        return this.idTags.equals(other.idTags);
     }
 
     @Override
