@@ -24,7 +24,7 @@
 	  `id_categorias` INT(11) NOT NULL AUTO_INCREMENT,
 	  `glosa_categoria` VARCHAR(255) NOT NULL COMMENT 'nombre de categoria que aperece en el sitio',
 	  `alias_categoria` VARCHAR(45) DEFAULT NULL COMMENT 'alias de busqueda regex',
-	  `resenia` VARCHAR(45) DEFAULT NULL COMMENT 'pequeña reseña para la categoria',
+	  `resenia` VARCHAR(45) DEFAULT NULL COMMENT 'pequeÃ±a reseÃ±a para la categoria',
 	  PRIMARY KEY (`id_categorias`),
 	  UNIQUE KEY `id_categorias` (`id_categorias`)
 	) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -138,10 +138,9 @@
 	/*Data for the table `tags` */
 
 	INSERT  INTO `tags`(`id_tags`,`glosa_tag`) VALUES 
-	(1,'one_piece'),
-	(2,'haikyuu'),
-	(3,'colo-colo'),
-	(4,'one-piece');
+	(1,'One_Piece'),
+	(2,'One-Punch_Man'),
+	(3,'NOCHE_DE_BOXEO');
 
 	/*Table structure for table `tags_paginas` */
 
@@ -163,8 +162,7 @@
 	(1,1),
 	(1,3),
 	(2,2),
-	(3,4),
-	(4,3);
+	(3,4);
 
 	/*Table structure for table `usuarios` */
 
@@ -190,7 +188,7 @@
 	INSERT  INTO `usuarios`(`id_usuarios`,`nombres`,`apellido_paterno`,`apellido_materno`,`email`,`celular`,`activo`,`password`) VALUES 
 	(1,'Renzo','Limone','Muñoz','rflimone@gmail.com',976448057,1,'e2523a6b18b82a0a28ee18940276444a'),
 	(2,'Esteban','Lozano','Q','estebanlozano26@gmail.com',963757900,1,'e2523a6b18b82a0a28ee18940276444a'),
-	(3,'Javiera','Pérez','Hernández','jdperez@uc.cl',997726725,1,'e2523a6b18b82a0a28ee18940276444a');
+	(3,'Javiera','Pérez','Hernández','farsofarso@farso.cl',997726725,1,'e2523a6b18b82a0a28ee18940276444a');
 
 	/*Table structure for table `ws_access` */
 
