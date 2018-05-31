@@ -57,7 +57,7 @@ public class PaginaDao {
         jql.append("LEFT JOIN p.tagSet t ");
         jql.append("WHERE p.id = :id ");
         
-        Query query = em.createQuery(jql.toString(), Categoria.class);
+        Query query = em.createQuery(jql.toString(), Tag.class);
         query.setParameter("id", p.getIdPaginas());
         return query.getResultList();
     }

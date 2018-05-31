@@ -42,7 +42,7 @@ public class Tag implements Serializable {
     @JoinTable(name = "tags_paginas", joinColumns = {
             @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")}, inverseJoinColumns = {
             @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")})
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.LAZY)
     @JsonBackReference(value = "tags")
     private List<Pagina> paginas;
     @OneToMany(mappedBy = "idTags", fetch = FetchType.LAZY)

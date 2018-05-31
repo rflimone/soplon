@@ -17,7 +17,9 @@ import java.util.regex.Pattern;
 
 import entities.Tag;
 import java.io.IOException;
+import java.util.stream.Collectors;
 import org.apache.commons.text.similarity.LevenshteinDistance;
+import org.jsoup.select.Collector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +60,7 @@ public class PageReader {
             /* Lista de las categorias del sistema*/
             List<Categoria> catList = categoriaService.getCategorias();
 
-            for (Pagina pagina : paginas) {
+            for (Pagina pagina : new ArrayList<>(paginas)) {
                 if (!pagina.getUrl().contains("rss") && !pagina.getUrl().contains("feed")) {
                     continue;
                 }
@@ -100,12 +102,9 @@ public class PageReader {
                             if (tag == null) {
                                 tag = new Tag();
                                 tag.setGlosaTag(tagText);
-                                tag = tagService.save(tag);
-                                tag = tagService.findWithPaginas(tag.getIdTags());
                                 tags.add(tag);
+                                tag.setPaginas(new ArrayList<>());
                             }
-                            if (tag.getPaginas() == null) tag.setPaginas(new ArrayList<>());
-                            tag.getPaginas().add(p);
 
                             p.setTagSet(new HashSet<>());
                             p.getTagSet().add(tag);
@@ -142,11 +141,17 @@ public class PageReader {
                                 p.setIdCategorias(c);
                             }
                             
+                            paginas.add(p);
+                            paginasForNotifications.add(p);
+                            
                             p = paginaService.insertPagina(p);
                             p.setIdCategorias(paginaService.findCategoria(p));
                             p.setTagSet(new HashSet<>(paginaService.findTag(p)));
-                            paginas.add(p);
-                            paginasForNotifications.add(p);
+                            
+                            for(Tag currentTag : p.getTagSet()) {
+                                if (!currentTag.getGlosaTag().equals(tagText)) continue;
+                                tag = currentTag;
+                            }
 
                             System.out.println("***********************************");
                         } else {

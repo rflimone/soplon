@@ -53,10 +53,12 @@ public class PaginaService {
         });
     }
 
+    @Transactional(readOnly = true)
     public Categoria findCategoria(Pagina p) {
         return paginaDao.findCategoria(p);
     }
 
+    @Transactional(readOnly = true)
     public List<Tag> findTag(Pagina p) {
         return paginaDao.findTag(p);
     }
