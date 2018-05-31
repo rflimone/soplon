@@ -5,7 +5,7 @@ import entities.Categoria;
 import entities.Pagina;
 import entities.Tag;
 import java.util.List;
-import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -42,8 +42,8 @@ public class PaginaService {
     }
 
     @Transactional
-    public void updatePagina(Pagina pagina) {
-        paginaDao.savePagina(pagina);
+    public Pagina updatePagina(Pagina pagina) {
+        return paginaDao.savePagina(pagina);
     }
 
     @Transactional

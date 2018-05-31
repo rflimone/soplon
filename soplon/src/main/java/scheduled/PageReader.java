@@ -103,6 +103,7 @@ public class PageReader {
                                 tag = new Tag();
                                 tag.setGlosaTag(tagText);
                                 tags.add(tag);
+                                tag = tagService.save(tag);
                                 tag.setPaginas(new ArrayList<>());
                             }
 
@@ -140,18 +141,17 @@ public class PageReader {
                                 c.setIdCategorias(pagina.getIdCategorias().getIdCategorias());
                                 p.setIdCategorias(c);
                             }
-                            
-                            paginas.add(p);
-                            paginasForNotifications.add(p);
+
                             
                             p = paginaService.insertPagina(p);
                             p.setIdCategorias(paginaService.findCategoria(p));
                             p.setTagSet(new HashSet<>(paginaService.findTag(p)));
-                            
-                            for(Tag currentTag : p.getTagSet()) {
-                                if (!currentTag.getGlosaTag().equals(tagText)) continue;
-                                tag = currentTag;
-                            }
+
+                            if (tag.getIdTags() == null)
+                                tags = tagService.findWithPaginas();
+
+                            paginas.add(p);
+                            paginasForNotifications.add(p);
 
                             System.out.println("***********************************");
                         } else {
@@ -180,6 +180,9 @@ public class PageReader {
                                 pagina.setDateNew(date);
 
                                 System.out.println("***********************************");
+                                pagina = paginaService.updatePagina(pagina);
+                                pagina.setIdCategorias(paginaService.findCategoria(pagina));
+                                pagina.setTagSet(new HashSet<>(paginaService.findTag(pagina)));
                                 paginasForNotifications.add(pagina);
                             }
                         }

@@ -28,7 +28,7 @@ public class NotificationService {
     @Autowired
     private SmsSender smsSender;
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     public void lookForNotifications(List<Pagina> paginaUpdateList) throws IOException {
         if (paginaUpdateList.isEmpty()) {
             return;
