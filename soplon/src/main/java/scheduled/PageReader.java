@@ -52,16 +52,13 @@ public class PageReader {
     public void lookForUpdates() {
         try {
             /* Se utiliza para recorrer las existentes, url base de categorización*/
-            List<Pagina> paginaList = paginaService.findPaginasWithTag();
-            /* Se utiliza para array de nuevos sitios*/
-            List<Pagina> paginaInsertList = new ArrayList<>();
-            /* Se utiliza para array de actualizacion de sitios*/
-            List<Pagina> paginaUpdateList = new ArrayList<>();
+            List<Pagina> paginas = paginaService.findPaginasWithTag();
+            List<Pagina> paginasForNotifications = new ArrayList<>();
             List<Tag> tags = tagService.findWithPaginas();
             /* Lista de las categorias del sistema*/
             List<Categoria> catList = categoriaService.getCategorias();
 
-            for (Pagina pagina : paginaList) {
+            for (Pagina pagina : paginas) {
                 if (!pagina.getUrl().contains("rss") && !pagina.getUrl().contains("feed")) {
                     continue;
                 }
@@ -71,10 +68,9 @@ public class PageReader {
                     SyndFeed feed = new SyndFeedInput().build(reader);
 
                     for (SyndEntry entry : feed.getEntries()) {
-                        Pagina encontradoBD = pageExists(entry.getLink(), paginaList);
-                        Pagina encontradoMemoria = pageExists(entry.getLink(), paginaInsertList);
+                        Pagina encontrado = pageExists(entry.getLink(), paginas);
 
-                        if (encontradoBD == null && encontradoMemoria == null) {
+                        if (encontrado == null) {
                             System.out.println("REGISTRO DE INSERT");
                             Date date = getLastUpdate(entry);
 
@@ -145,49 +141,48 @@ public class PageReader {
                                 c.setIdCategorias(pagina.getIdCategorias().getIdCategorias());
                                 p.setIdCategorias(c);
                             }
-                            paginaInsertList.add(p);
+                            
+                            p = paginaService.insertPagina(p);
+                            p.setIdCategorias(paginaService.findCategoria(p));
+                            p.setTagSet(new HashSet<>(paginaService.findTag(p)));
+                            paginas.add(p);
+                            paginasForNotifications.add(p);
 
                             System.out.println("***********************************");
                         } else {
                             Date date = getLastUpdate(entry);
-                            Pagina paginaToUpdate = encontradoBD == null ? encontradoMemoria : encontradoBD;
-                            if (date.after(paginaToUpdate.getDateNew())) {
+                            if (date.after(pagina.getDateNew())) {
                                 System.out.println("REGISTRO DE UPDATE");
                                 System.out.println("Link: " + entry.getLink());
-                                paginaToUpdate.setUrlUltimo(entry.getLink());
+                                pagina.setUrlUltimo(entry.getLink());
 
                                 System.out.println("Título: " + entry.getTitle());
-                                paginaToUpdate.setTituloPagina(entry.getTitle());
+                                pagina.setTituloPagina(entry.getTitle());
 
                                 if (entry.getDescription().getValue().contains("img")) {
                                     System.out.println("Imágen: " + entry.getDescription().getValue());
-                                    paginaToUpdate.setImagen(entry.getDescription().getValue());
+                                    pagina.setImagen(entry.getDescription().getValue());
 
                                 } else {
                                     System.out.println("Descripción: " + entry.getDescription().getValue());
-                                    paginaToUpdate.setGlosaPagina(entry.getDescription().getValue());
+                                    pagina.setGlosaPagina(entry.getDescription().getValue());
                                 }
 
-                                /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() paginaToUpdate.setTagSet(tagSet); */
+                                /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                                 System.out.println("Fecha nueva: " + date);
-                                System.out.println("Fecha anterior: " + paginaToUpdate.getDateNew());
-                                paginaToUpdate.setDateLast(paginaToUpdate.getDateNew());
-                                paginaToUpdate.setDateNew(date);
-
-                                if (encontradoBD != null) {
-                                    paginaUpdateList.add(paginaToUpdate);
-                                }
+                                System.out.println("Fecha anterior: " + pagina.getDateNew());
+                                pagina.setDateLast(pagina.getDateNew());
+                                pagina.setDateNew(date);
 
                                 System.out.println("***********************************");
+                                paginasForNotifications.add(pagina);
                             }
                         }
                     }
                 } catch (FeedException | IOException | IllegalArgumentException e) {
                     e.printStackTrace();
                 }
-                paginaService.insertPaginas(paginaInsertList);
-                paginaService.updatePaginas(paginaUpdateList);
-                notificationService.lookForNotifications(paginaUpdateList);
+                notificationService.lookForNotifications(paginasForNotifications);
             }
         } catch (Exception e) {
             e.printStackTrace();
