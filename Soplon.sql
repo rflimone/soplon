@@ -53,7 +53,7 @@
 	  UNIQUE KEY `id_metodos_envio` (`id_metodos_envio`),
 	  KEY `FKMetodos_En279065` (`id_usuarios`),
 	  CONSTRAINT `FKMetodos_En279065` FOREIGN KEY (`id_usuarios`) REFERENCES `usuarios` (`id_usuarios`)
-	) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+	) ENGINE=INNODB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 	/*Data for the table `metodos_envio` */
 
@@ -133,7 +133,7 @@
 	  `glosa_tag` VARCHAR(255) DEFAULT NULL,
 	  PRIMARY KEY (`id_tags`),
 	  UNIQUE KEY `id_tags` (`id_tags`)
-	) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+	) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 	/*Data for the table `tags` */
 
@@ -181,7 +181,7 @@
 	  UNIQUE KEY `email` (`email`),
 	  UNIQUE KEY `celular` (`celular`),
 	  UNIQUE KEY `id_usuarios` (`id_usuarios`)
-	) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+	) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 	/*Data for the table `usuarios` */
 
