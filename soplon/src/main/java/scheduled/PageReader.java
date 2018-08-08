@@ -17,9 +17,7 @@ import java.util.regex.Pattern;
 
 import entities.Tag;
 import java.io.IOException;
-import java.util.stream.Collectors;
 import org.apache.commons.text.similarity.LevenshteinDistance;
-import org.jsoup.select.Collector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,34 +154,34 @@ public class PageReader {
                             System.out.println("***********************************");
                         } else {
                             Date date = getLastUpdate(entry);
-                            if (date.after(pagina.getDateNew())) {
+                            if (date.after(encontrado.getDateNew())) {
                                 System.out.println("REGISTRO DE UPDATE");
                                 System.out.println("Link: " + entry.getLink());
-                                pagina.setUrlUltimo(entry.getLink());
+                                encontrado.setUrlUltimo(entry.getLink());
 
                                 System.out.println("Título: " + entry.getTitle());
-                                pagina.setTituloPagina(entry.getTitle());
+                                encontrado.setTituloPagina(entry.getTitle());
 
                                 if (entry.getDescription().getValue().contains("img")) {
                                     System.out.println("Imágen: " + entry.getDescription().getValue());
-                                    pagina.setImagen(entry.getDescription().getValue());
+                                    encontrado.setImagen(entry.getDescription().getValue());
 
                                 } else {
                                     System.out.println("Descripción: " + entry.getDescription().getValue());
-                                    pagina.setGlosaPagina(entry.getDescription().getValue());
+                                    encontrado.setGlosaPagina(entry.getDescription().getValue());
                                 }
 
                                 /* Se deberia poder utilizar una expresion para obtener el tag del link entry.getLink() pagina.setTagSet(tagSet); */
                                 System.out.println("Fecha nueva: " + date);
-                                System.out.println("Fecha anterior: " + pagina.getDateNew());
-                                pagina.setDateLast(pagina.getDateNew());
-                                pagina.setDateNew(date);
+                                System.out.println("Fecha anterior: " + encontrado.getDateNew());
+                                encontrado.setDateLast(encontrado.getDateNew());
+                                encontrado.setDateNew(date);
 
                                 System.out.println("***********************************");
-                                pagina = paginaService.updatePagina(pagina);
-                                pagina.setIdCategorias(paginaService.findCategoria(pagina));
-                                pagina.setTagSet(new HashSet<>(paginaService.findTag(pagina)));
-                                paginasForNotifications.add(pagina);
+                                encontrado = paginaService.updatePagina(encontrado);
+                                encontrado.setIdCategorias(paginaService.findCategoria(encontrado));
+                                encontrado.setTagSet(new HashSet<>(paginaService.findTag(encontrado)));
+                                paginasForNotifications.add(encontrado);
                             }
                         }
                     }
@@ -191,6 +189,7 @@ public class PageReader {
                     e.printStackTrace();
                 }
                 notificationService.lookForNotifications(paginasForNotifications);
+                paginasForNotifications.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -213,7 +212,7 @@ public class PageReader {
             } else if (pagina.getIdCategorias().getIdCategorias() != 5) {
                 LevenshteinDistance algoritmoDistancia = new LevenshteinDistance();
                 double distancia = algoritmoDistancia.apply(pagina.getUrlUltimo().toLowerCase(), url.toLowerCase());
-                if (distancia / pagina.getUrlUltimo().length() <= 0.2) {
+                if (distancia / pagina.getUrlUltimo().length() <= 0.15) {
                     encontrado = pagina;
                     break;
                 }
