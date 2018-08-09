@@ -7,13 +7,15 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,8 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Subscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected SubscripcionPK subscripcionPK;
+    @Id
+    @Column(name = "id_subscripciones")
+    protected Long idSubscripcion;
     @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas", insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "pagina")
@@ -43,11 +46,13 @@ public class Subscripcion implements Serializable {
     @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")
     @JsonBackReference(value = "tags")
     private Tag idTags;
+    @OneToOne(mappedBy = "subscripcion")
+    private MetodoEnvio metodoEnvio;
 
     public Subscripcion() {
     }
 
-    public Subscripcion(SubscripcionPK subscripcionPK) {
+    /*public Subscripcion(SubscripcionPK subscripcionPK) {
         this.subscripcionPK = subscripcionPK;
     }
 
@@ -61,7 +66,7 @@ public class Subscripcion implements Serializable {
 
     public void setSubscripcionPK(SubscripcionPK subscripcionPK) {
         this.subscripcionPK = subscripcionPK;
-    }
+    }*/
 
     public Pagina getPagina() {
         return pagina;
@@ -87,10 +92,18 @@ public class Subscripcion implements Serializable {
         this.idTags = idTags;
     }
 
+    public MetodoEnvio getMetodoEnvio() {
+        return metodoEnvio;
+    }
+
+    public void setMetodoEnvio(MetodoEnvio metodoEnvio) {
+        this.metodoEnvio = metodoEnvio;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (subscripcionPK != null ? subscripcionPK.hashCode() : 0);
+        hash += (idSubscripcion != null ? idSubscripcion.hashCode() : 0);
         return hash;
     }
 
@@ -100,16 +113,16 @@ public class Subscripcion implements Serializable {
             return false;
         }
         Subscripcion other = (Subscripcion) object;
-        if (this.subscripcionPK == null || other.subscripcionPK == null) {
+        if (this.idSubscripcion == null || other.idSubscripcion == null) {
             return false;
         }
 
-        return this.subscripcionPK.equals(other.subscripcionPK);
+        return this.idSubscripcion.equals(other.idSubscripcion);
     }
 
     @Override
     public String toString() {
-        return "mariadb.Subscripcion[ subscripcionPK=" + subscripcionPK + " ]";
+        return "mariadb.Subscripcion[ idSubscripcion=" + idSubscripcion + " ]";
     }
 
 }

@@ -33,25 +33,48 @@ public class NotificationService {
         if (paginaUpdateList.isEmpty()) {
             return;
         }
+        Boolean envioCorreo;
+        Boolean envioSMS;
+        Boolean envioPushNotification;
+
         List<Usuario> userList = userDao.findUserWithSubscription(paginaUpdateList);
 
         for (Usuario user : userList) {
+            envioCorreo = Boolean.FALSE;
+            envioSMS = Boolean.FALSE;
+            envioPushNotification = Boolean.FALSE;
+
             StringBuilder builder = new StringBuilder();
+            StringBuilder builderSms = new StringBuilder();
+
+
             for (Subscripcion subscripcion : user.getSubscripciones()) {
                 builder.append(makeNotificationPlainText(subscripcion.getPagina()));
+                builderSms.append(makeNotificationSms(subscripcion.getPagina()));
+                
+            
+
+                if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("email")) {
+                    envioCorreo = Boolean.TRUE;
+                } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("sms")) {
+                    envioSMS = Boolean.TRUE;
+                } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("push")) {
+                    envioPushNotification = Boolean.TRUE;
+                }
+            }
+
+            if (envioCorreo) {
+                emailSender.sendMail(user.getNombres(), user.getEmail(), builder.toString());
+            }
+            if (envioSMS) {
+                smsSender.sendSms(user.getNombres(), user.getCelular(), builderSms.toString());
+            }
+            if (envioPushNotification) {
+                //nada 
             }
             
-            emailSender.sendMail(user.getNombres(), user.getEmail(), builder.toString());
-
-            //Aca esta fallando, ya que se necesita identificar el metodo de envio, pero solo podemos obtener la subscripcion.
-//            if (user.getSubscripciones().equals("Email")) {
-//                emailSender.sendMail(user.getNombres(), user.getEmail(), builder.toString());
-//            NO DESCOMENTAR EL IF DE SMS, GASTA $$$
-//            } else if (user.getSubscripciones().equals("SMS")) {
-//                smsSender.sendSms(user.getNombres(), user.getCelular(), builder.toString());
-//            } else if (user.getSubscripciones().equals("PUSH")) {
-//                //No hay utilities de push aún.
-//            }
+            builder.setLength(0);
+            builderSms.setLength(0);
         }
 
     }
@@ -70,9 +93,19 @@ public class NotificationService {
             return String.format(
                     "\nEnhorabuena!, lo nuevo de %s ya esta diponible en %s\nEsto fue subido al sitio en fecha %s\n\n",
                     pagina.getTituloPagina(),
-                    pagina.getUrlUltimo(),
+                    pagina.getUrlUltimo().replaceAll("_",""),
                     sdf.format(pagina.getDateNew()));
         }
 
     }
+    
+    private String makeNotificationSms(Pagina pagina) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+          return String.format(
+                    "Ya esta diponible %s en %s\nCon en fecha %s\n\n",
+                    pagina.getTituloPagina(),
+                    pagina.getUrlUltimo(),
+                    sdf.format(pagina.getDateNew()));
+    }
+    
 }

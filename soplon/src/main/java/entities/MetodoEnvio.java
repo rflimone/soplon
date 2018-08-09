@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -46,6 +47,9 @@ public class MetodoEnvio implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "metodoEnvio")
     private Usuario idUsuarios;
+    @OneToOne
+    @JoinColumn(name = "id_subscripciones", referencedColumnName = "id_subscripciones")
+    private Subscripcion subscripcion;
 
     public MetodoEnvio() {
     }
@@ -76,6 +80,14 @@ public class MetodoEnvio implements Serializable {
 
     public void setIdUsuarios(Usuario idUsuarios) {
         this.idUsuarios = idUsuarios;
+    }
+
+    public Subscripcion getSubscripcion() {
+        return subscripcion;
+    }
+
+    public void setSubscripcion(Subscripcion subscripcion) {
+        this.subscripcion = subscripcion;
     }
 
     @Override

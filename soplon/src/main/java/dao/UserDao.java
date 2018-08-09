@@ -33,6 +33,7 @@ public class UserDao {
         StringBuilder jql = new StringBuilder();
         jql.append("SELECT DISTINCT u FROM Usuario u ");
         jql.append("LEFT JOIN FETCH u.subscripciones s ");
+        jql.append("LEFT JOIN FETCH s.metodoEnvio ");
         jql.append("WHERE s.pagina in :paginas");
 
         Query q = em.createQuery(jql.toString(), Usuario.class);
