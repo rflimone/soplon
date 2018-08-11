@@ -58,14 +58,14 @@
 	/*Data for the table `metodos_envio` */
 
 	INSERT  INTO `metodos_envio`(`id_metodos_envio`,`glosa_metodo_envio`,`id_usuarios`,`id_subscripciones`) VALUES 
-	(1,'push',1,1),
-	(2,'push',1,2),
+	(1,'email',1,1),
+	(2,'sms',1,2),
 	(3,'push',1,3),
-	(4,'push',1,4),
-	(5,'push',3,5),
-	(6,'push',3,6),
-	(7,'push',4,7),
-	(8,'push',4,8);
+	(4,'email',1,4),
+	(5,'email',3,5),
+	(6,'email',3,6),
+	(7,'sms',4,7),
+	(8,'email',4,8);
 
 	/*Table structure for table `paginas` */
 
