@@ -1,4 +1,4 @@
-	/*
+/*
 	SQLyog Ultimate v12.4.3 (64 bit)
 	MySQL - 5.7.21 : Database - mariadb_soplon
 	*********************************************************************
@@ -24,7 +24,7 @@
 	  `id_categorias` INT(11) NOT NULL AUTO_INCREMENT,
 	  `glosa_categoria` VARCHAR(255) NOT NULL COMMENT 'nombre de categoria que aperece en el sitio',
 	  `alias_categoria` VARCHAR(45) DEFAULT NULL COMMENT 'alias de busqueda regex',
-	  `resenia` VARCHAR(45) DEFAULT NULL COMMENT 'pequeÃ±a reseÃ±a para la categoria',
+	  `resenia` VARCHAR(45) DEFAULT NULL COMMENT 'pequena resena para la categoria',
 	  PRIMARY KEY (`id_categorias`),
 	  UNIQUE KEY `id_categorias` (`id_categorias`)
 	) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -59,11 +59,13 @@
 
 	INSERT  INTO `metodos_envio`(`id_metodos_envio`,`glosa_metodo_envio`,`id_usuarios`,`id_subscripciones`) VALUES 
 	(1,'email',1,1),
-	(2,'push',1,2),
-	(3,'sms',1,3),
+	(2,'sms',1,2),
+	(3,'push',1,3),
 	(4,'email',1,4),
 	(5,'email',3,5),
-	(6,'sms',3,6);
+	(6,'email',3,6),
+	(7,'sms',4,7),
+	(8,'email',4,8);
 
 	/*Table structure for table `paginas` */
 
@@ -92,7 +94,7 @@
 	INSERT  INTO `paginas`(`id_paginas`,`url`,`url_ultimo`,`titulo_pagina`,`glosa_pagina`,`date_last`,`date_new`,`imagen`,`id_categorias`) VALUES 
 	(1,'https://readms.net/rss','https://readms.net/r/one_piece/904/5058/1','The Commanders of the Revolutionary Army Appear 904','martes, 22 de mayo de 2018 13:48','2018-05-22 01:35:19','2018-04-22 13:48:22',NULL,1),
 	(2,'https://mangahis.com/feed','https://mangahis.com/manga/onepunchman/91','Onepunch-Man #91','Rover','2018-03-18 01:14:57','2018-04-29 13:33:37',NULL,1),
-	(3,'https://jaiminisbox.com/reader/feeds/rss','https://jaiminisbox.com/reader/series/one-piece-2','One Piece Chapter 904: The Entrance of The Revolutionary Army Commanders','','2018-05-25 06:03:47','2018-05-25 06:03:47','<img src="https://i2.wp.com/jaiminisbox.com/reader/content/comics/one-piece-2_58650da78040f/thumb_3drv79et.jpg" />',1),
+	(3,'https://jaiminisbox.com/reader/feeds/rss','https://jaiminisbox.com/reader/read/one-piece-2/en/0/904/','One Piece Chapter 904: The Entrance of The Revolutionary Army Commanders','','2018-05-25 06:03:47','2018-05-25 06:03:47','<img src="https://i2.wp.com/jaiminisbox.com/reader/content/comics/one-piece-2_58650da78040f/thumb_3drv79et.jpg" />',1),
 	(4,'http://www.ticketpro.cl/rss/','http://www.ticketpro.cl/sports/2304146-Gran-Arena-Monticello-Noche-Boxeo-Miguel-Aguja-Gonzalez.html','NOCHE DE BOXEO - TITULO LATINOAMERICANO - MIGUEL AGUJA GONZALEZ/ GRAN ARENA MONTICELLO','Gran Arena Monticello, Domingo 01 de Julio / 20:30 hrs.','2018-05-22 01:35:20','2018-05-03 13:50:57',NULL,2);
 
 	/*Table structure for table `subscripciones` */
@@ -118,11 +120,14 @@
 
 	INSERT  INTO `subscripciones`(`id_subscripciones`,`id_usuarios`,`id_paginas`,`id_tags`) VALUES 
 	(1,1,1,1),
-	(3,1,3,1),
 	(2,1,2,2),
+	(3,1,3,1),
 	(4,2,4,3),
 	(5,3,1,1),
-	(6,3,3,1);
+	(6,3,3,1),
+	(7,4,1,1),
+	(8,4,2,2),
+	(9,2,1,1);
 
 	/*Table structure for table `tags` */
 
@@ -188,7 +193,8 @@
 	INSERT  INTO `usuarios`(`id_usuarios`,`nombres`,`apellido_paterno`,`apellido_materno`,`email`,`celular`,`activo`,`password`) VALUES 
 	(1,'Renzo','Limone','Muñoz','rflimone@gmail.com',976448057,1,'e2523a6b18b82a0a28ee18940276444a'),
 	(2,'Esteban','Lozano','Q','estebanlozano26@gmail.com',963757900,1,'e2523a6b18b82a0a28ee18940276444a'),
-	(3,'Javiera','Pérez','Hernández','farsofarso@farso.cl',997726725,1,'e2523a6b18b82a0a28ee18940276444a');
+	(3,'Javiera','Pérez','Hernández','jdperez@uc.cl',997726725,1,'e2523a6b18b82a0a28ee18940276444a'),
+	(4,'Jonathan','Bravo','Gajardo','jonna.bravo@gmail.com',958586900,1,'e2523a6b18b82a0a28ee18940276444a');
 
 	/*Table structure for table `ws_access` */
 
@@ -289,4 +295,4 @@
 	/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 	/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 	/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-	/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
