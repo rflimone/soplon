@@ -1,4 +1,4 @@
-package api;
+
 
 import org.simplejavamail.email.Email;
 import org.simplejavamail.email.EmailBuilder;

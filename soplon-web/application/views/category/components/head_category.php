@@ -6,7 +6,7 @@ switch ($category) {
   case 'deportes':
     $background = 'blue lighten-1';
     break;
-  case 'musica':
+  case 'conciertos':
     $background = 'green lighten-1';
     break;
   case 'teatro':

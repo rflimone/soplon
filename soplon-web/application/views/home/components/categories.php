@@ -60,11 +60,11 @@ if($this->session->userdata('register')){
           <div class="col s12 m6 l3">
             <div class="card green lighten-1">
               <div class="card-content white-text center">
-                <span class="card-title center">Música</span>
+                <span class="card-title center">Conciertos</span>
                 <p>Entérate de los últimos eventos musicales, conciertos o eventos!</p>
               </div>
               <div class="card-action center">
-                <a href="<?= base_url() ?>c/musica" class="white-text">Revisar</a>
+                <a href="<?= base_url() ?>c/conciertos" class="white-text">Revisar</a>
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@ if($this->session->userdata('register')){
           <div class="col s12 m6 l3">
             <div class="card red lighten-1">
               <div class="card-content white-text center">
-                <span class="card-title center">Animé</span>
+                <span class="card-title center">Anime</span>
                 <p>Mira los animé que todos están mirando, sin importar de donde!</p>
               </div>
               <div class="card-action center">

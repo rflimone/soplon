@@ -1,4 +1,4 @@
-package api;
+
 
 import java.net.URL;
 import com.rometools.rome.feed.synd.SyndEntry;
@@ -11,15 +11,15 @@ public class rssReaderTester {
     public static void main(String[] args) {
 
         try {
-            String url = "https://jaiminisbox.com/reader/feeds/rss";
+            String url = "http://www.crunchyroll.com/rss/anime";
 
             try (XmlReader reader = new XmlReader(new URL(url))) {
                 SyndFeed feed = new SyndFeedInput().build(reader);
                 System.out.println(feed.getTitle());
                 System.out.println("***********************************");
                 for (SyndEntry entry : feed.getEntries()) {
-                    System.out.println(feed);
-                    System.out.println(entry);
+//                    System.out.println(feed);
+//                    System.out.println(entry);
                     
                     System.out.println(entry.getLink());
 
