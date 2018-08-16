@@ -9,9 +9,12 @@ import entities.Pagina;
 import entities.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,12 +24,28 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @PersistenceContext
     private EntityManager em;
 
     public List<Usuario> getUser() {
         Query query = em.createNamedQuery("Usuario.findAll", Usuario.class);
         return query.getResultList();
+    }
+
+    public Usuario getUserByUsername(String email) {
+        Query query = em.createNamedQuery("Usuario.findByUsername", Usuario.class);
+
+        query.setMaxResults(1);
+        query.setParameter("email", email);
+
+        try {
+            return (Usuario) query.getSingleResult();
+        } catch (NoResultException e) {
+            logger.debug("No hay resultados");
+            return null;
+        }
     }
 
     public List<Usuario> findUserWithSubscription(List<Pagina> paginas) {
@@ -39,7 +58,7 @@ public class UserDao {
         Query q = em.createQuery(jql.toString(), Usuario.class);
 
         q.setParameter("paginas", paginas);
-        
+
         return q.getResultList();
     }
 

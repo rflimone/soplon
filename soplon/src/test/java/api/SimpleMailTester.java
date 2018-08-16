@@ -1,3 +1,5 @@
+package api;
+
 
 
 import org.simplejavamail.email.Email;
