@@ -46,6 +46,7 @@ public class Subscripcion implements Serializable {
     @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")
     @JsonBackReference(value = "tags")
     private Tag idTags;
+    @JsonBackReference
     @OneToOne(mappedBy = "subscripcion")
     private MetodoEnvio metodoEnvio;
 
