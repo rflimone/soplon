@@ -1,5 +1,7 @@
 package api;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import services.UserService;
+
+import javax.xml.bind.DatatypeConverter;
 
 public class CustomAuthenticator implements AuthenticationProvider {
     private static final String DISABLED_MESSAGE = "La cuenta se encuentra deshabilitada";
@@ -54,7 +60,15 @@ public class CustomAuthenticator implements AuthenticationProvider {
     }
 
     private boolean passwordMatches(String inputPass, String realPass) {
-        String hash = MD5Encoder.encode(inputPass.getBytes());
-        return hash.equals(realPass);
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            return false;
+        }
+        md.update(inputPass.getBytes());
+        byte[] digest = md.digest();
+        String hash = DatatypeConverter.printHexBinary(digest);
+        return hash.equalsIgnoreCase(realPass);
     }
 }
