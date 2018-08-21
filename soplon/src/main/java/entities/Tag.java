@@ -103,9 +103,6 @@ public class Tag implements Serializable {
         }
         Tag other = (Tag) object;
         if (this.idTags == null || other.idTags == null) {
-            if (this.glosaTag != null) {
-                return this.glosaTag.equals(other.glosaTag);
-            }
             return false;
         }
         return this.idTags.equals(other.idTags);

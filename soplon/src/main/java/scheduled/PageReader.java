@@ -100,8 +100,8 @@ public class PageReader {
                             if (tag == null) {
                                 tag = new Tag();
                                 tag.setGlosaTag(tagText);
-                                tags.add(tag);
                                 tag = tagService.save(tag);
+                                tags.add(tag);
                                 tag.setPaginas(new ArrayList<>());
                             }
 
@@ -225,7 +225,7 @@ public class PageReader {
         Tag encontrado = null;
         for (Tag tag : tags) {
 
-            if (tag.getGlosaTag().toLowerCase().equals(glosa.toLowerCase())) {
+            if (tag.getGlosaTag().equalsIgnoreCase(glosa)) {
                 encontrado = tag;
                 break;
             } else {
