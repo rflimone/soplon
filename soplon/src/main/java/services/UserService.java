@@ -31,12 +31,11 @@ public class UserService {
 
     public UserDetails getUserByUsername(String username) {
         Usuario user = userDao.getUserByUsername(username);
-        
-        
+
         return new UserDetails() {
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {
-                   return Collections.emptyList();
+                return Collections.emptyList();
             }
 
             @Override
@@ -69,8 +68,21 @@ public class UserService {
                 return true;
             }
         };
-  
-
-        
     }
+
+    @Transactional
+    public Usuario updateUsuario(Usuario usuario) {
+        return userDao.saveUsuario(usuario);
+    }
+
+    @Transactional
+    public void deleteUsuario(Integer id) {
+        userDao.deleteUserById(id);
+    }
+
+    @Transactional
+    public Usuario insertUsuario(Usuario usuario) {
+        return userDao.saveUsuario(usuario);
+    }
+
 }

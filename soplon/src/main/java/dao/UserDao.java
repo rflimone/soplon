@@ -62,4 +62,34 @@ public class UserDao {
         return q.getResultList();
     }
 
+    public Usuario getUserById(Integer id) {
+        Query query = em.createNamedQuery("Usuario.findById", Usuario.class);
+
+        query.setMaxResults(1);
+        query.setParameter("id_usuarios", id);
+
+        try {
+            return (Usuario) query.getSingleResult();
+        } catch (NoResultException e) {
+            logger.debug("No hay resultados");
+            return null;
+        }
+    }
+
+    public void insertUsuario(Usuario usuario) {
+        em.persist(usuario);
+    }
+
+    public Usuario saveUsuario(Usuario usuario) {
+        return em.merge(usuario);
+    }
+
+    public void deleteUserById(Integer id) {
+        Usuario user = em.find(Usuario.class, id);
+
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
+    }
+
 }

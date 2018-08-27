@@ -1,8 +1,7 @@
-package dao;
+    package dao;
 
 import entities.*;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
