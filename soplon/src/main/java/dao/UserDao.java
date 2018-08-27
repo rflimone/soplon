@@ -76,20 +76,13 @@ public class UserDao {
         }
     }
 
-    public void insertUsuario(Usuario usuario) {
-        em.persist(usuario);
-    }
-
     public Usuario saveUsuario(Usuario usuario) {
         return em.merge(usuario);
     }
 
     public void deleteUserById(Integer id) {
         Usuario user = em.find(Usuario.class, id);
-
-        em.getTransaction().begin();
         em.remove(user);
-        em.getTransaction().commit();
     }
 
 }

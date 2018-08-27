@@ -32,7 +32,7 @@ public class CustomAuthenticator implements AuthenticationProvider {
         String username = authentication.getName();
         String inputPassword = null;
         
-        UserDetails userDetails = userService.getUserByUsername(username);
+        UserDetails userDetails = userService.getUserDetailByUsername(username);
         
         if (authentication.getCredentials() != null) {
             inputPassword = authentication.getCredentials().toString();

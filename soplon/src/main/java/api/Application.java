@@ -22,7 +22,7 @@ public class Application {
 
     @Autowired
     public void authenticationManager(AuthenticationManagerBuilder builder) throws Exception {
-        builder.userDetailsService(username -> userService.getUserByUsername(username));
+        builder.userDetailsService(username -> userService.getUserDetailByUsername(username));
     }
 
 }
