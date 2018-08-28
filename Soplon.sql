@@ -404,7 +404,7 @@ UNLOCK TABLES;
 /*Data for the table `oauth_client_details` */
 
 INSERT  INTO `oauth_client_details`(`client_id`,`resource_ids`,`client_secret`,`scope`,`authorized_grant_types`,`web_server_redirect_uri`,`authorities`,`access_token_validity`,`refresh_token_validity`,`additional_information`,`autoapprove`) VALUES 
-('web',NULL,'{noop}Soplon123','read','password',NULL,NULL,10,NULL,NULL,'YES');
+('web',NULL,'{noop}Soplon123','read,write','password,refresh_token',NULL,NULL,5000,5000,NULL,'YES');
 
 --
 -- Table structure for table `oauth_client_token`
@@ -485,4 +485,3 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
