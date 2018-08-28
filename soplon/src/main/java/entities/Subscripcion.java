@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,8 +34,9 @@ public class Subscripcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_subscripciones")
-    protected Long idSubscripcion;
+    private Long idSubscripcion;
     @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas", insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "pagina")
@@ -100,6 +103,15 @@ public class Subscripcion implements Serializable {
     public void setMetodoEnvio(MetodoEnvio metodoEnvio) {
         this.metodoEnvio = metodoEnvio;
     }
+
+    public Long getIdSubscripcion() {
+        return idSubscripcion;
+    }
+
+    public void setIdSubscripcion(Long idSubscripcion) {
+        this.idSubscripcion = idSubscripcion;
+    }
+    
 
     @Override
     public int hashCode() {

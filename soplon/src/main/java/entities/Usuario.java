@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
+    @NamedQuery(name = "Usuario.findByUsername", query = "SELECT DISTINCT u FROM Usuario u LEFT JOIN FETCH u.subscripciones s LEFT JOIN FETCH s.metodoEnvio WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -76,7 +76,6 @@ public class Usuario implements Serializable {
     @JsonManagedReference(value = "metodoEnvio")
     private Set<MetodoEnvio> metodosDeEnvio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "subscripciones")
     private Set<Subscripcion> subscripciones;
 
     public Usuario() {

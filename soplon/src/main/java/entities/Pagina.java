@@ -56,13 +56,12 @@ public class Pagina implements Serializable {
     private String imagen;
 
     @ManyToMany(mappedBy = "paginas", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JsonManagedReference(value = "tags")
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JsonBackReference(value = "paginas")
     private Categoria idCategorias;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagina", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY)
     @JsonManagedReference(value = "pagina")
     private Set<Subscripcion> subscripcionSet;
 

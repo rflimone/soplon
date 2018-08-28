@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -61,21 +60,7 @@ public class UserDao {
 
         return q.getResultList();
     }
-
-    public Usuario getUserById(Integer id) {
-        Query query = em.createNamedQuery("Usuario.findById", Usuario.class);
-
-        query.setMaxResults(1);
-        query.setParameter("id_usuarios", id);
-
-        try {
-            return (Usuario) query.getSingleResult();
-        } catch (NoResultException e) {
-            logger.debug("No hay resultados");
-            return null;
-        }
-    }
-
+    
     public Usuario saveUsuario(Usuario usuario) {
         return em.merge(usuario);
     }

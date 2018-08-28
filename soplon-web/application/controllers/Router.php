@@ -13,4 +13,3 @@ class Router extends CI_Controller{
   }
 }
 ?>
-
