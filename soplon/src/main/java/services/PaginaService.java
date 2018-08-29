@@ -68,4 +68,8 @@ public class PaginaService {
         return paginaDao.findTag(p);
     }
 
+    @Transactional(readOnly = true)
+    public List<Pagina> findPaginasByCat(String categoria) {
+        return paginaDao.findByCategoria(categoria);
+    }
 }

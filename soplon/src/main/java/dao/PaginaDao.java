@@ -63,13 +63,26 @@ public class PaginaDao {
     public List<Pagina> findPaginasByTag(String glosa) {
         StringBuilder jpql = new StringBuilder();
 
-        jpql.append("SELECT t.paginas FROM Tag t ");
+        jpql.append("SELECT p FROM Pagina p ");
+        jpql.append("INNER JOIN p.tagSet t ");
         jpql.append("WHERE UPPER(t.glosaTag) = UPPER(:glosa) ");
 
-        TypedQuery<Pagina> q = em.createQuery(jpql.toString(), Pagina.class);
+        Query q = em.createQuery(jpql.toString(), Pagina.class);
         q.setParameter("glosa", glosa);
 
         return q.getResultList();
     }
 
+    public List<Pagina> findByCategoria(String categoria) {
+        StringBuilder jpql = new StringBuilder();
+
+        jpql.append("SELECT p FROM Pagina p ");
+        jpql.append("INNER JOIN p.idCategorias c ");
+        jpql.append("WHERE UPPER(c.glosaCategoria) = UPPER(:categoria) ");
+
+        Query q = em.createQuery(jpql.toString(), Pagina.class);
+        q.setParameter("categoria", categoria);
+
+        return q.getResultList();
+    }
 }

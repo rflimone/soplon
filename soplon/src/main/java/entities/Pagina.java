@@ -64,7 +64,6 @@ public class Pagina implements Serializable {
     @JsonBackReference(value = "paginas")
     private Categoria idCategorias;
     @OneToMany(mappedBy = "pagina", fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "pagina")
     private Set<Subscripcion> subscripcionSet;
 
     public Pagina() {

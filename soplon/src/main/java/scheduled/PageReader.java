@@ -153,7 +153,7 @@ public class PageReader {
                             paginasForNotifications.add(p);
 
                             System.out.println("***********************************");
-                        } else {
+                        } else if (!entry.getLink().equals(encontrado.getUrlUltimo())) {
                             Date date = getLastUpdate(entry);
                             if (date.after(encontrado.getDateNew())) {
                                 System.out.println("REGISTRO DE UPDATE");
