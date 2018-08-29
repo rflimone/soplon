@@ -34,6 +34,7 @@ import services.TagService;
  */
 @Component
 public class PageReader {
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -48,7 +49,7 @@ public class PageReader {
     @Autowired
     private TagService tagService;
 
-//    @Scheduled(fixedDelay = 40000)
+    @Scheduled(fixedDelay = 40000)
     public void lookForUpdates() {
         try {
             /* Se utiliza para recorrer las existentes, url base de categorización*/
@@ -140,13 +141,13 @@ public class PageReader {
                                 p.setIdCategorias(c);
                             }
 
-                            
                             p = paginaService.insertPagina(p);
                             p.setIdCategorias(paginaService.findCategoria(p));
                             p.setTagSet(new HashSet<>(paginaService.findTag(p)));
 
-                            if (tag.getIdTags() == null)
+                            if (tag.getIdTags() == null) {
                                 tags = tagService.findWithPaginas();
+                            }
 
                             paginas.add(p);
                             paginasForNotifications.add(p);
