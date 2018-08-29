@@ -1,4 +1,4 @@
-    package dao;
+package dao;
 
 import entities.*;
 import java.util.List;
@@ -7,7 +7,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -40,7 +39,7 @@ public class PaginaDao {
         jql.append("SELECT c FROM Pagina p ");
         jql.append("LEFT JOIN p.idCategorias c ");
         jql.append("WHERE p.id = :id ");
-        
+
         Query query = em.createQuery(jql.toString(), Categoria.class);
         query.setParameter("id", p.getIdPaginas());
         try {
@@ -55,9 +54,22 @@ public class PaginaDao {
         jql.append("SELECT t FROM Pagina p ");
         jql.append("LEFT JOIN p.tagSet t ");
         jql.append("WHERE p.id = :id ");
-        
+
         Query query = em.createQuery(jql.toString(), Tag.class);
         query.setParameter("id", p.getIdPaginas());
         return query.getResultList();
     }
+
+    public List<Pagina> findPaginasByTag(String glosa) {
+        StringBuilder jpql = new StringBuilder();
+
+        jpql.append("SELECT t.paginas FROM Tag t ");
+        jpql.append("WHERE UPPER(t.glosaTag) = UPPER(:glosa) ");
+
+        TypedQuery<Pagina> q = em.createQuery(jpql.toString(), Pagina.class);
+        q.setParameter("glosa", glosa);
+
+        return q.getResultList();
+    }
+
 }

@@ -44,7 +44,7 @@ public class TagDao {
         }
     }
 
-    public Tag findWithPaginas(String glosa) {
+    public Tag findSubscripcionesByTag(String glosa) {
         StringBuilder jpql = new StringBuilder();
 
         jpql.append("SELECT DISTINCT t FROM Tag t ")

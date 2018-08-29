@@ -28,6 +28,11 @@ public class PaginaService {
     public List<Pagina> findPaginasWithTag() {
         return paginaDao.findPaginasWithTag();
     }
+    
+    @Transactional(readOnly = true)
+    public List<Pagina> findPaginasByTag(String glosa) {
+        return paginaDao.findPaginasByTag(glosa);
+    }
 
     @Transactional
     public Pagina insertPagina(Pagina pagina) {

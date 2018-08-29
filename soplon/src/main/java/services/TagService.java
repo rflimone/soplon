@@ -36,8 +36,8 @@ public class TagService {
     }
 
     @Transactional(readOnly = true)
-    public Tag findWithPaginas(String glosa) {
-        return  tagDao.findWithPaginas(glosa);
+    public Tag findSubscripcionesByTag(String glosa) {
+        return  tagDao.findSubscripcionesByTag(glosa);
     }
 
     @Transactional(readOnly = false)

@@ -49,7 +49,7 @@ public class PageReader {
     @Autowired
     private TagService tagService;
 
-    @Scheduled(fixedDelay = 40000)
+//    @Scheduled(fixedDelay = 40000)
     public void lookForUpdates() {
         try {
             /* Se utiliza para recorrer las existentes, url base de categorización*/

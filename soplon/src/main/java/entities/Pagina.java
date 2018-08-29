@@ -54,8 +54,10 @@ public class Pagina implements Serializable {
     @Size(max = 1000)
     @Column(name = "imagen")
     private String imagen;
-
-    @ManyToMany(mappedBy = "paginas", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinTable(name = "tags_paginas", joinColumns = {
+            @JoinColumn(name = "id_paginas", referencedColumnName = "id_paginas")}, inverseJoinColumns = {
+            @JoinColumn(name = "id_tags", referencedColumnName = "id_tags")})
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Tag> tagSet;
     @JoinColumn(name = "id_categorias", referencedColumnName = "id_categorias")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

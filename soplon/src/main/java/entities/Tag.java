@@ -7,8 +7,6 @@ package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.apache.commons.lang3.RandomUtils;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,11 +14,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
-/**
- * @author rlimone
- */
 @Entity
 @Table(name = "tags")
 @XmlRootElement
