@@ -12,8 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import utilities.EmailSender;
-import utilities.SmsSender;
+import utilities.*;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -27,6 +26,9 @@ public class NotificationService {
 
     @Autowired
     private SmsSender smsSender;
+    
+    @Autowired
+    private WspSender wspSender;
 
     @Transactional(readOnly = true)
     public void lookForNotifications(List<Pagina> paginaUpdateList) throws IOException {
@@ -70,7 +72,7 @@ public class NotificationService {
                 smsSender.sendSms(user.getNombres(), user.getCelular(), builderSms.toString());
             }
             if (envioPushNotification) {
-                //nada 
+                wspSender.sendWsp(user.getNombres(), user.getCelular(), builderSms.toString());
             }
             
             builder.setLength(0);
@@ -84,7 +86,7 @@ public class NotificationService {
         String detalle = pagina.getGlosaPagina() != null ? pagina.getGlosaPagina() : pagina.getImagen();
         if (pagina.getGlosaPagina() != null) {
             return String.format(
-                    "\nEnhorabuena!, lo nuevo de %s ya esta diponible en %s\nEn detalle, se trata de '%s'\nEsto fue subido al sitio en fecha %s\n\n",
+                    "\nEnhorabuena!, lo nuevo de %s ya esta diponible en %s\nEn detalle," + " se trata de '%s'\nEsto fue subido al sitio en fecha %s\n\n",
                     pagina.getTituloPagina(),
                     pagina.getUrlUltimo(),
                     detalle,
