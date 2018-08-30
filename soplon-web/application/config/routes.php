@@ -6,6 +6,7 @@ $route['default_controller'] = 'Router/index';
 $route['translate_uri_dashes'] = TRUE;
 
 // categorias
+$route['c/(:any)/(:num)'] = 'app/home/categories/$1/$2';
 $route['c/(:any)'] = 'app/home/categories/$1';
 
 // Notification
