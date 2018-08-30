@@ -13,3 +13,5 @@
 /soplon/target/
 /WebSoplon/nbproject/private/
 /**/*/.idea
+/**/node_modules
+/soplon-app/www/

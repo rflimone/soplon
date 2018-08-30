@@ -6,7 +6,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"controller","dao","services","scheduled","utilities"})
+@ComponentScan({"controller", "dao", "services", "scheduled", "utilities"})
 public class Config {
-    
 }

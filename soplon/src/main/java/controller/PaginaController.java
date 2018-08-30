@@ -22,7 +22,6 @@ public class PaginaController {
     @Autowired
     private PaginaService paginaService;
 
-    @CrossOrigin(origins = {"http://localhost:8383"}, allowCredentials = "false")
     @GetMapping(value = "/pagina/get-all")
     public List<Pagina> getPaginas() {
         return paginaService.getPaginas();

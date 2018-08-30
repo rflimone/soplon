@@ -27,7 +27,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableAuthorizationServer
 public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    private static final List<String> allowedOrigins = Arrays.asList("172.20.*", "localhost");
+    private static final List<String> allowedOrigins = Arrays.asList("*");
     private static final List<String> corsUrls = Arrays.asList("/oauth/token", "/oauth/refresh_token", "/**");
     @Autowired
     private AuthenticationManager authenticationManager;
