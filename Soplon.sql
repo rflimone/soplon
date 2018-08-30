@@ -76,10 +76,10 @@
 	  `url` VARCHAR(255) DEFAULT NULL,
 	  `url_ultimo` VARCHAR(255) DEFAULT NULL,
 	  `titulo_pagina` VARCHAR(255) DEFAULT NULL,
-	  `glosa_pagina` VARCHAR(1000) DEFAULT NULL,
+	  `glosa_pagina` VARCHAR(10000) DEFAULT NULL,
 	  `date_last` DATETIME DEFAULT NULL,
 	  `date_new` DATETIME DEFAULT NULL,
-	  `imagen` VARCHAR(1000) DEFAULT NULL,
+	  `imagen` VARCHAR(10000) DEFAULT NULL,
 	  `id_categorias` INT(11) NOT NULL,
 	  PRIMARY KEY (`id_paginas`),
 	  UNIQUE KEY `id_paginas` (`id_paginas`),
@@ -94,8 +94,8 @@
 	INSERT  INTO `paginas`(`id_paginas`,`url`,`url_ultimo`,`titulo_pagina`,`glosa_pagina`,`date_last`,`date_new`,`imagen`,`id_categorias`) VALUES 
 	(1,'https://readms.net/rss','https://readms.net/r/one_piece/904/5058/1','The Commanders of the Revolutionary Army Appear 904','martes, 22 de mayo de 2018 13:48','2018-05-22 01:35:19','2018-04-22 13:48:22',NULL,1),
 	(2,'https://mangahis.com/feed','https://mangahis.com/manga/onepunchman/91','Onepunch-Man #91','Rover','2018-03-18 01:14:57','2018-04-29 13:33:37',NULL,1),
-	(3,'https://jaiminisbox.com/reader/feeds/rss','https://jaiminisbox.com/reader/read/one-piece-2/en/0/904/','One Piece Chapter 904: The Entrance of The Revolutionary Army Commanders','','2018-05-25 06:03:47','2018-05-25 06:03:47','<img src="https://i2.wp.com/jaiminisbox.com/reader/content/comics/one-piece-2_58650da78040f/thumb_3drv79et.jpg" />',1),
-	(4,'http://www.ticketpro.cl/rss/','http://www.ticketpro.cl/sports/2304146-Gran-Arena-Monticello-Noche-Boxeo-Miguel-Aguja-Gonzalez.html','NOCHE DE BOXEO - TITULO LATINOAMERICANO - MIGUEL AGUJA GONZALEZ/ GRAN ARENA MONTICELLO','Gran Arena Monticello, Domingo 01 de Julio / 20:30 hrs.','2018-05-22 01:35:20','2018-05-03 13:50:57',NULL,2),
+	(3,'https://jaiminisbox.com/reader/feeds/rss','https://jaiminisbox.com/reader/read/one-piece-2/en/0/914/','One Piece Chapter 914: Okobore, The Town of Leftovers','','2018-08-17 05:09:47','2018-08-17 05:09:47','<img src="https://i2.wp.com/jaiminisbox.com/reader/content/comics/one-piece-2_58650da78040f/thumb_3drv79et.jpg" />',1),
+	(4,'http://www.ticketpro.cl/rss/','https://www.ticketpro.cl/sports/1405618-Union-Espanola-vs-Universidad-Catolica-Campeonato-Scotiabank-2018.html','UNIÓN ESPAÑOLA VS UNIVERSIDAD CATOLICA / CAMPEONATO SCOTIABANK 2018','Estadio Santa Laura - Universidad Sek , Sábado 01 de Septiembre, 17:30 hrs.','2018-08-22 17:10:00','2018-08-22 17:10:00',NULL,2),
 	(5,'http://www.crunchyroll.com/rss/anime','http://www.crunchyroll.com/cells-at-work/episode-5-cedar-pollen-allergies-774887','Cells at Work! - Episode 5 - Cedar Pollen Allergies','','2018-07-28 12:30:00','2018-08-04 12:30:00','<img src="https://img1.ak.crunchyroll.com/i/spire2-tmb/4a3fd4563c255cc9c4237c04a0dad17d1533371306_thumb.jpg"  /><br />The body has been invaded by a mass of cedar pollen! Rushing to the scene so that he can eliminate the cedar pollen, White Blood Cell (Neutrophil) runs into Memory Cell. Memory Cell is a Lymphocyte who retains the immune system’s memories. Seeing what’s actually going on, Memory Cell is strangely flustered. “What the heck? This is just like the legend...” What “legend” is Memory Cell talking about?',6);
 
 	/*Table structure for table `subscripciones` */
@@ -123,12 +123,10 @@
 	(1,1,1,1),
 	(2,1,2,2),
 	(3,1,3,1),
-	(4,2,4,3),
-	(5,3,1,1),
-	(6,3,3,1),
-	(7,4,1,1),
-	(8,4,2,2),
-	(9,2,1,1);
+	(4,3,1,1),
+	(5,3,3,1),
+	(6,4,1,1),
+	(7,4,2,2);
 
 	/*Table structure for table `tags` */
 
@@ -146,7 +144,8 @@
 	INSERT  INTO `tags`(`id_tags`,`glosa_tag`) VALUES 
 	(1,'One_Piece'),
 	(2,'One-Punch_Man'),
-	(3,'NOCHE_DE_BOXEO');
+	(3,'Union-Espanola'),
+	(4,'cells-at-work');
 
 	/*Table structure for table `tags_paginas` */
 
@@ -168,7 +167,8 @@
 	(1,1),
 	(1,3),
 	(2,2),
-	(3,4);
+	(3,4),
+	(4,5);
 
 	/*Table structure for table `usuarios` */
 
@@ -485,3 +485,4 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
