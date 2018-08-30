@@ -7,6 +7,9 @@ import entities.Usuario;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.persistence.NoResultException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -18,6 +21,8 @@ import utilities.*;
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class NotificationService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserDao userDao;
 
@@ -26,7 +31,7 @@ public class NotificationService {
 
     @Autowired
     private SmsSender smsSender;
-    
+
     @Autowired
     private WspSender wspSender;
 
@@ -49,20 +54,22 @@ public class NotificationService {
             StringBuilder builder = new StringBuilder();
             StringBuilder builderSms = new StringBuilder();
 
-
             for (Subscripcion subscripcion : user.getSubscripciones()) {
                 builder.append(makeNotificationPlainText(subscripcion.getPagina()));
                 builderSms.append(makeNotificationSms(subscripcion.getPagina()));
-                
-            
 
-                if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("email")) {
-                    envioCorreo = Boolean.TRUE;
-                } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("sms")) {
-                    envioSMS = Boolean.TRUE;
-                } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("push")) {
-                    envioPushNotification = Boolean.TRUE;
+                try {
+                    if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("email")) {
+                        envioCorreo = Boolean.TRUE;
+                    } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("sms")) {
+                        envioSMS = Boolean.TRUE;
+                    } else if (subscripcion.getMetodoEnvio().getGlosaMetodoEnvio().equalsIgnoreCase("push")) {
+                        envioPushNotification = Boolean.TRUE;
+                    }
+                } catch (NoResultException e) {
+                    logger.debug("No hay resultados: "+e);
                 }
+
             }
 
             if (envioCorreo) {
@@ -74,7 +81,7 @@ public class NotificationService {
             if (envioPushNotification) {
                 wspSender.sendWsp(user.getNombres(), user.getCelular(), builderSms.toString());
             }
-            
+
             builder.setLength(0);
             builderSms.setLength(0);
         }
@@ -95,19 +102,19 @@ public class NotificationService {
             return String.format(
                     "\nEnhorabuena!, lo nuevo de %s ya esta diponible en %s\nEsto fue subido al sitio en fecha %s\n\n",
                     pagina.getTituloPagina(),
-                    pagina.getUrlUltimo().replaceAll("_",""),
+                    pagina.getUrlUltimo().replaceAll("_", ""),
                     sdf.format(pagina.getDateNew()));
         }
 
     }
-    
+
     private String makeNotificationSms(Pagina pagina) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-          return String.format(
-                    "Ya esta diponible %s en %s\nCon en fecha %s\n\n",
-                    pagina.getTituloPagina(),
-                    pagina.getUrlUltimo(),
-                    sdf.format(pagina.getDateNew()));
+        return String.format(
+                "Ya esta diponible %s en %s\nCon en fecha %s\n\n",
+                pagina.getTituloPagina(),
+                pagina.getUrlUltimo(),
+                sdf.format(pagina.getDateNew()));
     }
-    
+
 }

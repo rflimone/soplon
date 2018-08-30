@@ -13,7 +13,7 @@ public class rssReaderTester {
     public static void main(String[] args) {
 
         try {
-            String url = "http://www.crunchyroll.com/rss/anime";
+            String url = "http://www.ticketpro.cl/rss/";
 
             try (XmlReader reader = new XmlReader(new URL(url))) {
                 SyndFeed feed = new SyndFeedInput().build(reader);

@@ -42,7 +42,7 @@ public class Pagina implements Serializable {
     @Size(max = 255)
     @Column(name = "titulo_pagina")
     private String tituloPagina;
-    @Size(max = 1000)
+    @Size(max = 10000)
     @Column(name = "glosa_pagina")
     private String glosaPagina;
     @Column(name = "date_last")
@@ -51,7 +51,7 @@ public class Pagina implements Serializable {
     @Column(name = "date_new")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNew;
-    @Size(max = 1000)
+    @Size(max = 10000)
     @Column(name = "imagen")
     private String imagen;
     @JoinTable(name = "tags_paginas", joinColumns = {
