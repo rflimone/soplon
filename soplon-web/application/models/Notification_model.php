@@ -54,9 +54,12 @@ class Notification_model extends CI_Model{
     $q1 = $this->db->select('p.glosa_pagina,
                              p.titulo_pagina,
                              p.url_ultimo,
-                             s.id_subscripciones
+                             s.id_subscripciones,
+                             t.glosa_tag
                             ')
                    ->join('paginas p', 'p.id_paginas = s.id_paginas', 'left')
+                   ->join('tags_paginas tp', 'tp.id_paginas = p.id_paginas', 'left')
+                   ->join('tags t', 't.id_tags = tp.id_tags', 'left')
                    ->where('s.id_usuarios', $user_id)
                    ->order_by('s.id_subscripciones', 'desc')
                    ->get('subscripciones s');
@@ -77,5 +80,22 @@ class Notification_model extends CI_Model{
     }else{
       return false;
     }
+  }
+
+  /**
+   * delete_sub, elimina un subcripcion del usuario
+   */
+  public function delete_subs($id){
+
+    $q1 = $this->db->where('id_subscripciones', $id)
+                   ->delete('subscripciones');
+
+    return $q1;
+  }
+  /**
+   * update subscripcion
+   */
+  public function  update_subs($id_subs, $params){
+    
   }
 }

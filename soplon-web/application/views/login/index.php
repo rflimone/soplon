@@ -10,11 +10,11 @@
         <div class="col s12 m6 l6">
           <div class="row">
           <div class="input-field col s12">
-            <input placeholder="Ingresa tu email" id="email" type="text" class="validate">
+            <input placeholder="Ingresa tu email" id="email_login" type="text" class="validate">
             <label for="first_name">Email</label>
           </div>
           <div class="input-field col s12">
-            <input placeholder="Ingresa tu contraseña" id="password" type="password" class="validate">
+            <input placeholder="Ingresa tu contraseña" id="password_login" type="password" class="validate">
             <label for="last_name">Contraseña</label>
           </div>
           <div class="input-field col s12">
@@ -32,11 +32,11 @@
 
   <script type="text/javascript">
   function login(){
-    if(!$("#email").val()){
+    if(!$("#email_login").val()){
        Materialize.toast('El campo usuario es obligatorio', 3000);
       return false;
     }
-    if(!$("#password").val()){
+    if(!$("#password_login").val()){
       Materialize.toast('El campo contraseña es obligatorio', 3000);
       return false;
     }
@@ -46,8 +46,8 @@
       type: 'post',
       dataType: 'json',
       data: {
-        email : $("#email").val(),
-        password: $("#password").val()
+        email : $("#email_login").val(),
+        password: $("#password_login").val()
       },
       success: function(response){
         if(response.status === 'ok'){
