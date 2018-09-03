@@ -1,13 +1,14 @@
 import Axios from 'axios'
 import QueryString from 'querystring'
+import LoggerService from './LoggerService'
 
 let AuthService = {};
 
 (function () {
   this.getToken = function () {
-    return Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       Axios.post(
-        'http://localhost:8080/oauth/token',
+        `${process.env.API_HOST}/oauth/token`,
         QueryString.stringify({
           username: 'rflimone@gmail.com',
           password: 'testSoplon',
@@ -23,9 +24,9 @@ let AuthService = {};
           }
         }
       ).then(response => {
-        console.log(response.data)
+        LoggerService.debug('token was obtained: ', response.data)
         localStorage.setItem('auth', JSON.stringify(response.data))
-        resolve(response.data)
+        resolve()
       })
     })
   }
