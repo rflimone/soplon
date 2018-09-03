@@ -18,16 +18,18 @@
     <div>
       <v-ons-row v-for="rowIndex in rows" :key="rowIndex">
         <v-ons-col>
-          <v-ons-card @click="goTo(categories[getFirstIndex(rowIndex)].glosaCategoria)">
+          <v-ons-card @click="goTo(categories[getFirstIndex(rowIndex)].glosaCategoria)"
+                      :class="['categoria', categories[getFirstIndex(rowIndex)].glosaCategoria.toLowerCase()]">
             <div class="title">{{ categories[getFirstIndex(rowIndex)].glosaCategoria }}</div>
-            <div class="content">{{ categories[getFirstIndex(rowIndex)].glosaCategoria }}</div>
+            <div class="content">{{ categories[getFirstIndex(rowIndex)].resenia }}</div>
           </v-ons-card>
         </v-ons-col>
         <v-ons-col>
           <v-ons-card v-if="categories.length > getLastIndex(rowIndex)"
-                      @click="goTo(categories[getLastIndex(rowIndex)].glosaCategoria)">
+                      @click="goTo(categories[getLastIndex(rowIndex)].glosaCategoria)"
+                      :class="['categoria', categories[getLastIndex(rowIndex)].glosaCategoria.toLowerCase()]">
             <div class="title">{{ categories[getLastIndex(rowIndex)].glosaCategoria }}</div>
-            <div class="content">{{ categories[getLastIndex(rowIndex)].glosaCategoria }}</div>
+            <div class="content">{{ categories[getLastIndex(rowIndex)].resenia }}</div>
           </v-ons-card>
         </v-ons-col>
       </v-ons-row>
@@ -111,6 +113,47 @@
     text-align: center;
   }
 
+  .card__title {
+    text-align: center;
+  }
+
+  .card__content {
+    text-align: center;
+  }
+
+  .categoria {
+    color: white;
+    height: 200px;
+  }
+
+  .manga {
+    background-color: #ffa726;
+  }
+
+  .deportes {
+    background-color: #42A5F5;
+  }
+
+  .conciertos {
+    background-color: #66BB6A;
+  }
+
+  .teatro{
+    background-color: #26a69a;
+  }
+
+  .cultura{
+    background-color: #455a64;
+  }
+
+  .anime{
+    background-color: #EF5350;
+  }
+
+  .familia{
+    background-color: #4527a0;
+  }
+
   img {
     max-width: 300px;
   }
@@ -122,14 +165,5 @@
 
   ons-list-title:not(:first-of-type) {
     margin-top: 30px;
-  }
-
-  ons-card {
-    text-align: center;
-  }
-
-  ons-list-item,
-  ons-card {
-    cursor: pointer;
   }
 </style>
