@@ -24,7 +24,7 @@
 	  `id_categorias` INT(11) NOT NULL AUTO_INCREMENT,
 	  `glosa_categoria` VARCHAR(255) NOT NULL COMMENT 'nombre de categoria que aperece en el sitio',
 	  `alias_categoria` VARCHAR(45) DEFAULT NULL COMMENT 'alias de busqueda regex',
-	  `resenia` VARCHAR(45) DEFAULT NULL COMMENT 'pequena resena para la categoria',
+	  `resenia` VARCHAR(100) DEFAULT NULL COMMENT 'pequena resena para la categoria',
 	  PRIMARY KEY (`id_categorias`),
 	  UNIQUE KEY `id_categorias` (`id_categorias`)
 	) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -32,13 +32,13 @@
 	/*Data for the table `categorias` */
 
 	INSERT  INTO `categorias`(`id_categorias`,`glosa_categoria`,`alias_categoria`,`resenia`) VALUES 
-	(1,'Manga','manga',NULL),
-	(2,'Deportes','deporte|sports',NULL),
-	(3,'Conciertos','concierto|musica|concerts',NULL),
-	(4,'Teatro','cine|teatro|theatre',NULL),
-	(5,'Intelectuales','libros|seminars|events',NULL),
-	(6,'Anime','anime|crunchyroll',NULL),
-	(7,'Familia','family|familia',NULL);
+	(1,'Manga','manga','Recibe las últimas actualizaciones de mangas, en tiempo real!'),
+	(2,'Deportes','deporte|sports','Encuentra entradas a deportes, en el momento que comience su venta!'),
+	(3,'Conciertos','concierto|musica|concerts','Entérate de los últimos eventos musicales, conciertos o eventos!'),
+	(4,'Teatro','cine|teatro|theatre','Prepárate y asiste a las funciones destacadas!'),
+	(5,'Cultura','libros|seminars|events','Acude a lo último en eventos, libros y seminarios!'),
+	(6,'Anime','anime|crunchyroll','Mira los animé que todos están mirando, sin importar de donde!'),
+	(7,'Familia','family|familia','Obtén entradas para eventos familiares!');
 
 	/*Table structure for table `metodos_envio` */
 

@@ -1,7 +1,7 @@
 <template v-if="categories">
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
-      <div class="left">
+      <div class="right">
         <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
           <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
         </v-ons-toolbar-button>
@@ -113,6 +113,19 @@
     text-align: center;
   }
 
+  img {
+    max-width: 300px;
+  }
+
+  ons-list-title {
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  ons-list-title:not(:first-of-type) {
+    margin-top: 30px;
+  }
+
   .card__title {
     text-align: center;
   }
@@ -154,16 +167,4 @@
     background-color: #4527a0;
   }
 
-  img {
-    max-width: 300px;
-  }
-
-  ons-list-title {
-    text-transform: capitalize;
-    text-align: center;
-  }
-
-  ons-list-title:not(:first-of-type) {
-    margin-top: 30px;
-  }
 </style>
