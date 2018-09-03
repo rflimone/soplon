@@ -10,41 +10,25 @@
     </v-ons-toolbar>
 
     <div class="header">
+      <p></p>
       <img src="../assets/logo.png">
     </div>
 
-    <v-ons-search-input placeholder="Search something"
-                        @change="getPagesByCategory"
-                        v-model="category">
-    </v-ons-search-input>
-
-    <ul>
-      <li v-for="(page, index) in pages" :key="index"> 
-        {{ page.tituloPagina }}
-      </li>
-    </ul>
-
-    <v-ons-list-title>Vue.js Essential Links</v-ons-list-title>
-    <v-ons-list>
-      <v-ons-list-item v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
-        <div class="center">{{ item.label }}</div>
-        <div class="right"><v-ons-icon icon="fa-external-link"></v-ons-icon></div>
-      </v-ons-list-item>
-    </v-ons-list>
-
-    <v-ons-list-title>Vue.js Ecosystem</v-ons-list-title>
+    <v-ons-list-title>Notificaciones de Entretención</v-ons-list-title>
     <v-ons-row>
       <v-ons-col>
-        <v-ons-card @click="goTo('http://router.vuejs.org/')">vue-router</v-ons-card>
+        <v-ons-card v-for="page of pages" :key="page.label" @click="push(page.component, page.label)">
+          <div class="title">{{ page.label }}</div>
+          <div class="content">{{ page.desc }}</div>
+        </v-ons-card>
       </v-ons-col>
       <v-ons-col>
-        <v-ons-card @click="goTo('http://vuex.vuejs.org/')">vuex</v-ons-card>
+        <v-ons-card @click="goTo('http://192.155.83.79/c/deportes')">Deportes</v-ons-card>
       </v-ons-col>
     </v-ons-row>
     <v-ons-row>
       <v-ons-col>
-        <v-ons-card @click="goTo('http://vue-loader.vuejs.org/')">vue-loader</v-ons-card>
+        <v-ons-card @click="goTo('http://192.155.83.79/c/conciertos')">Conciertos</v-ons-card>
       </v-ons-col>
       <v-ons-col>
         <v-ons-card @click="goTo('https://github.com/vuejs/awesome-vue')">awesome-vue</v-ons-card>
@@ -55,79 +39,22 @@
 </template>
 
 <script>
-import Axios from 'axios'
-import QueryString from 'querystring'
+import Manga from '../views/Manga.vue'
 
 let HomePage = {};
 
 (function () {
-  let self = null
   this.name = 'home'
-
-  this.created = function () {
-    self = this
-    Axios.post(
-      'http://localhost:8080/oauth/token',
-      QueryString.stringify({
-        username: 'rflimone@gmail.com',
-        password: 'testSoplon',
-        grant_type: 'password'
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        auth: {
-          username: 'web',
-          password: 'Soplon123'
-        }
-      }
-    ).then(response => {
-      console.log(response.data)
-      localStorage.setItem('auth', JSON.stringify(response.data))
-    })
-  }
 
   this.data = function () {
     return {
       category: null,
-      pages: null,
-      msg: 'Welcome',
-      essentialLinks: [
+      msg: 'Soplón',
+      pages: [
         {
+          component: Manga,
           label: 'Manga',
-          link: 'http://192.155.83.79/c/manga',
-          icon: 'fa-book'
-        },
-        {
-          label: 'Deportes',
-          link: 'http://192.155.83.79/c/deportes',
-          icon: 'fa-commenting'
-        },
-        {
-          label: 'Conciertos',
-          link: 'http://192.155.83.79/c/conciertos',
-          icon: 'ion-chatboxes'
-        },
-        {
-          label: 'Teatro',
-          link: 'http://192.155.83.79/c/teatro',
-          icon: 'fa-twitter'
-        },
-        {
-          label: 'Intelectuales',
-          link: 'http://192.155.83.79/c/intelectuales',
-          icon: 'fa-file-text'
-        },
-        {
-          label: 'Anime',
-          link: 'http://192.155.83.79/c/anime',
-          icon: 'fa-file-text'
-        },
-        {
-          label: 'Familia',
-          link: 'http://192.155.83.79/c/familia',
-          icon: 'fa-file-text'
+          desc: 'Recibe las últimas actualizaciones de mangas, en tiempo real!'
         }
       ]
     }
@@ -137,21 +64,17 @@ let HomePage = {};
     goTo (url) {
       window.open(url, '_blank')
     },
-    getPagesByCategory () {
-      console.log(this.$data.category)
-      console.log(JSON.parse(localStorage.getItem('auth')).access_token)
-      Axios.get(
-        'http://localhost:8080/private/paginas',
-        {
-          params: {
-            categoria: this.$data.category
-          },
-          headers: {
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('auth')).access_token}`
+    push (page, key) {
+      this.$store.commit('splitter/push', {
+        extends: page,
+        data () {
+          return {
+            toolbarInfo: {
+              backLabel: 'Home',
+              title: key
+            }
           }
         }
-      ).then(response => {
-        self.$data.pages = response.data
       })
     }
   }
@@ -171,7 +94,8 @@ img {
 }
 
 ons-list-title {
-  text-transform: none;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 ons-list-title:not(:first-of-type) {
@@ -182,7 +106,8 @@ ons-card {
   text-align: center;
 }
 
-ons-list-item, ons-card {
+ons-list-item,
+ons-card {
   cursor: pointer;
 }
 </style>

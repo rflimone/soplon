@@ -17,6 +17,7 @@
 <script>
 import HomePage from './components/HomePage'
 import MenuPage from './components/MenuPage'
+import Manga from './views/Manga'
 
 export default {
   name: 'app',
@@ -32,7 +33,8 @@ export default {
   },
   components: {
     HomePage,
-    MenuPage
+    MenuPage,
+    Manga
   }
 }
 </script>
