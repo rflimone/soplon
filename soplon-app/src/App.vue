@@ -8,16 +8,14 @@
       </v-ons-splitter-side>
 
       <v-ons-splitter-content>
-        <home-page></home-page>
+        <router-view></router-view>
       </v-ons-splitter-content>
     </v-ons-splitter>
   </v-ons-page>
 </template>
 
 <script>
-import HomePage from './components/HomePage'
-import MenuPage from './components/MenuPage'
-import Manga from './views/Manga'
+import MenuPage from '@/components/MenuPage'
 
 export default {
   name: 'app',
@@ -32,9 +30,7 @@ export default {
     }
   },
   components: {
-    HomePage,
-    MenuPage,
-    Manga
+    MenuPage
   }
 }
 </script>

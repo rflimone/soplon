@@ -19,7 +19,7 @@
     </v-ons-search-input>
 
     <ul>
-      <li v-for="(page, index) in pages" :key="index"> 
+      <li v-for="(page, index) in pages" :key="index">
         {{ page.tituloPagina }}
       </li>
     </ul>

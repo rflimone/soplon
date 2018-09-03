@@ -18,25 +18,17 @@ export default new Vuex.Store({
           } else {
             state.open = !state.open
           }
-        },
-        push (state, page) {
-          state.stack.push(page)
-        },
-        pop (state) {
-          if (state.stack.length > 1) {
-            state.stack.pop()
-          }
-        },
-        replace (state, page) {
-          state.stack.pop()
-          state.stack.push(page)
-        },
-        reset (state, page) {
-          state.stack = [page || state.stack[0]]
-        },
-        options (state, newOptions = {}) {
-          state.options = newOptions
         }
+      }
+    },
+    auth: {
+      namespaced: true,
+      state: {
+        token: JSON.parse(localStorage.getItem('auth')),
+        user: JSON.parse(localStorage.getItem('user'))
+      },
+      getters: {
+        token: state => state.token
       }
     }
   }

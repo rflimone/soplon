@@ -7,7 +7,6 @@
 
     <v-ons-list>
       <v-ons-list-item v-for="(item, index) in access" :key="item.title"
-        :modifier="md ? 'nodivider' : ''"
         @click="loadView(index)"
       >
         <div class="left">
@@ -49,9 +48,6 @@ export default {
   methods: {
     loadView (index) {
       this.$store.commit('splitter/toggle')
-    },
-    loadLink (url) {
-      window.open(url, '_blank')
     }
   }
 }
