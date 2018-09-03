@@ -7,11 +7,13 @@
         <h5>Páginas destacadas.</h5>
         <br>
         <?php
-        if($links){
-          foreach ($links as $link) {
+        if($results){
+          foreach ($results as $link) {
 
             // seteo de variables
-            $title_page = $link['titulo_pagina'] ? ucfirst($link['titulo_pagina']) : '';
+
+            $title_page = $link['glosa_tag'] ? ucfirst($link['glosa_tag'])  : ucfirst($link['titulo_pagina']);
+           // $title_page = $link['titulo_pagina'] ? ucfirst($link['titulo_pagina']) : '';
             $img_page = $link['imagen'] ? ucfirst($link['imagen']) : '';
             $uri_page = $link['url_ultimo'] ? $link['url_ultimo'] : '#';
             $glosa_page = $link['glosa_pagina'] ? ucfirst($link['glosa_pagina']) : 'Descripción no disponible';
@@ -41,6 +43,11 @@
           echo '<h3>No se encontraron resultados.</h3>';
         }
         ?>
+        <div class="center">
+        <?php if (isset($links)) { ?>
+            <?php echo $links ?>
+        <?php } ?>
+        </div>
       </div>
       <div class="col s12 m1 l1"></div>
       <div class="col s12 m4 l4">
