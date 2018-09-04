@@ -11,7 +11,7 @@
 
     <div class="header">
       <p></p>
-      <img src="../assets/logo.png">
+      <img src="../assets/Soplon_Mesa de trabajo 1.svg">
     </div>
 
     <v-ons-list-title>Notificaciones de Entretención</v-ons-list-title>

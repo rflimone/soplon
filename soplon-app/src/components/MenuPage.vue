@@ -2,7 +2,7 @@
   <v-ons-page>
     <v-ons-toolbar modifier="transparent"></v-ons-toolbar>
     <div class="header">
-      <img src="../assets/logo.png">
+      <img src="../assets/Soplon_Mesa de trabajo 1.svg">
     </div>
 
     <v-ons-list>
