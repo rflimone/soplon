@@ -1,4 +1,4 @@
-<template v-if="categories">
+<template id="home" v-if="categories">
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
       <div class="right">
@@ -10,7 +10,6 @@
     </v-ons-toolbar>
 
     <div class="header">
-      <p></p>
       <img src="../assets/Soplon_Mesa de trabajo 1.svg">
     </div>
 
@@ -64,7 +63,7 @@
     this.methods = {
       getCategories () {
         if (!this.token) {
-          AuthService.getToken().then(function () {
+          AuthService.getToken(this.$data.username, this.$data.password).then(function () {
             return CategoryService.getCategories()
           }).then(data => {
             LoggerService.debug('get categories, after token request', data)

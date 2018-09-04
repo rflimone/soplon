@@ -30,6 +30,40 @@ export default new Vuex.Store({
       getters: {
         token: state => state.token
       }
+    },
+    form: {
+      namespaced: true,
+      state: {
+        isSubmiting: false,
+        errorStates: {}
+      },
+      mutations: {
+        setSubmiting (state, value) {
+          state.isSubmiting = value
+        },
+        addError (state, obj) {
+          state.errorStates = Object.assign({}, state.errorStates, obj)
+        }
+      },
+      actions: {
+        submit (context, value) {
+          context.commit('setSubmiting', value)
+        },
+        error (context, obj) {
+          context.commit('addError', obj)
+        }
+      },
+      getters: {
+        errors (state) {
+          return Object.keys(state.errorStates).filter((key) => state.errorStates[key])
+        },
+        'error-states' (state) {
+          return state.errorStates
+        },
+        isSubmiting (state) {
+          return state.isSubmiting
+        }
+      }
     }
   }
 })

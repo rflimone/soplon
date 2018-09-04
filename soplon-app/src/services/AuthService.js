@@ -5,13 +5,13 @@ import LoggerService from './LoggerService'
 let AuthService = {};
 
 (function () {
-  this.getToken = function () {
+  this.getToken = function (username, password) {
     return new Promise((resolve, reject) => {
       Axios.post(
         `${process.env.API_HOST}/oauth/token`,
         QueryString.stringify({
-          username: 'rflimone@gmail.com',
-          password: 'testSoplon',
+          username: username,
+          password: password,
           grant_type: 'password'
         }),
         {
