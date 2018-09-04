@@ -36,8 +36,8 @@ let Login = {};
   this.data = function () {
     return {
       msg: 'Soplón',
-      username: 'rflimone@gmail.com',
-      password: 'testSoplon'
+      username: null, // 'rflimone@gmail.com',
+      password: null // 'testSoplon'
     }
   }
 
@@ -61,7 +61,7 @@ let Login = {};
       AuthService.getToken(this.$data.username, this.$data.password).then(token => {
         Logger.debug(`saving token in the local storage for: ${self.$data.username}`, token)
         self.$store.dispatch('auth/token', token)
-        self.$router.push('/HomePage')
+        self.$router.push({path: '/HomePage'})
       })
     }
   }
