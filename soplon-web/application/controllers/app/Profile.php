@@ -21,11 +21,12 @@ class Profile extends CI_Controller{
   public function index(){
     $data = ['title_page'=> 'Mi perfil - Soplón'];
 
-    $r = $this->rest_client->oauth('rflimone@gmail.com', 'testSoplon', 'password');
-    
     // información de la categoria
     $user_id = $this->session->userdata('id_user');
-    $data['user_info'] = $this->user_model->get_user($user_id);
+    $email = $this->session->userdata('email');
+    $oauth_session = $this->session->userdata('oauth');
+    
+    $data['user_info'] = $this->user_model->get_user($user_id, $email, $oauth_session['access_token']);
     //echo "<pre>"; print_r($data['subs']);die();
     $this->load->view('includes/head', $data)
                ->view('includes/nav')
@@ -55,11 +56,12 @@ class Profile extends CI_Controller{
     $data = $this->input->post();
     // información de la categoria
     $user_id = $this->session->userdata('id_user');
+    $oauth_session = $this->session->userdata('oauth');
     if(!$data){
       redirect(base_url(), 'profile/?error=ok');
     }
 
-    $update = $this->user_model->update_user($data, $user_id);
+    $update = $this->user_model->update_user($data, $user_id, $oauth_session['access_token']);
 
     if($update){
       $get = 'success=ok';
