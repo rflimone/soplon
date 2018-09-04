@@ -13,7 +13,7 @@
 
  class Rest_client{
     
-    private $apiUrl = 'http://192.155.83.79:8080';
+    private $apiUrl = 'http://192.155.83.79:8080/';
 
     /**
      * __construct(), constructor vacio de la clase
@@ -45,7 +45,7 @@
      * @param string $grand_type
      * @return array $response
      */
-    public function oauth($username, $password, $grant_type){
+    public function oauth($username, $password, $grant_type){ 
 
         $post = array(
             'username' => $username,
@@ -53,7 +53,7 @@
             'grant_type' => $grant_type
         );
         
-        $ch = curl_init($this->getApiUrl() .'/oauth/token');
+        $ch = curl_init($this->getApiUrl() .'oauth/token');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_POSTFIELDS,  http_build_query($post));
@@ -64,7 +64,7 @@
         ));
         $response = curl_exec($ch);
         
-        return  $response; //json_decode($res,true);
+        return  json_decode($response,true);
      
     }
 
@@ -79,20 +79,21 @@
      * 
      * @notes : refactorizar la función para eliminar una fuente de datos si es por get o post
      */
-    public function call_resource($endpoint, $method, $url_params = '', $data ='', $type_get = 1) {
+    public function call_resource($endpoint, $method, $url_params = '', $data ='', $type_get = 1, $token) {
 
         $enpoint = $this->getUrl($endpoint, $method, $url_params, $type_get);
-    
+        
         $response = '';
         $ch = curl_init($enpoint);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        if($method == 'POST' || $method == 'PUT'){
-          curl_setopt($ch, CURLOPT_POSTFIELDS,  json_encode($data));
-          curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Authorization: Bearer ". $token,
             "cache-control: no-cache",
             "content-type: application/x-www-form-urlencoded"
           ));
+        if($method == 'POST' || $method == 'PUT'){
+          curl_setopt($ch, CURLOPT_POSTFIELDS,  json_encode($data));
         }
         try{
     
@@ -154,10 +155,10 @@
             if($type_get == 1){
                   $response .= $this->token.'/'. $this->apiKey;
             }else{
-                  $response = $this->apiUrl.$endpoint.'/'.$this->token.'/'. $this->apiKey."?".$response2;
+                  $response = $this->apiUrl.$endpoint.'?'.$response2;
             }
         }else{//POST / PUT
-            $response .= $this->token.'/'. $this->apiKey;
+            $response .= '/';
         }
         return $response;
       }
