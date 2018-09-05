@@ -166,4 +166,8 @@
     background-color: #4527a0;
   }
 
+  .center.toolbar__center.toolbar__title.toolbar--material__center {
+  text-align: center;
+  }
+
 </style>

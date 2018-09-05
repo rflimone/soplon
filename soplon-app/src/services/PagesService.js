@@ -1,14 +1,17 @@
 import Axios from 'axios'
 import Store from '@/store'
 
-let CategoryService = {};
+let PagesService = {};
 
 (function () {
-  this.getCategories = function () {
+  this.getPagesByCategory = function () {
     return new Promise((resolve, reject) => {
       Axios.get(
-        `${process.env.API_HOST}/private/categorias`,
+        `${process.env.API_HOST}/private/paginas`,
         {
+          params: {
+            categoria: this.$data.category
+          },
           headers: {
             'Authorization': `Bearer ${Store.getters['auth/token'].access_token}`
           }
@@ -18,6 +21,6 @@ let CategoryService = {};
       })
     })
   }
-}).apply(CategoryService)
+}).apply(PagesService)
 
-export default CategoryService
+export default PagesService

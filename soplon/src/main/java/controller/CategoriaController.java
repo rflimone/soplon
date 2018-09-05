@@ -15,8 +15,8 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
     
-    @GetMapping(value = "/categoria/get-all")
-    public List<Categoria> getCategoria() {
+    @GetMapping(value = "private/categorias", produces = "application/json")
+    public List<Categoria> getCategorias() {
         return categoriaService.getCategorias();
     }
     

@@ -10,7 +10,7 @@ let routes = [
   },
   {
     name: 'home',
-    path: '/',
+    path: '/home',
     component: Home
 
   },
