@@ -1,7 +1,7 @@
 <nav class="white">
     <div class="nav-wrapper">
       <a href="<?= base_url() ?>" class="brand-logo center">
-        <img src="<?= base_url() ?>asset/images-app/logo.png" alt="" />
+        <img src="<?= base_url() ?>asset/images-app/logo.svg" alt="" height="100"/>
       </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down user-nav">
