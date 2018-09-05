@@ -25,8 +25,7 @@ let AuthService = {};
         }
       ).then(response => {
         LoggerService.debug('token was obtained: ', response.data)
-        localStorage.setItem('auth', JSON.stringify(response.data))
-        resolve()
+        resolve(response.data)
       })
     })
   }

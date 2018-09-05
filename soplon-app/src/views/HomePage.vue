@@ -1,4 +1,4 @@
-<template id="home" v-if="categories">
+<template id="home">
   <v-ons-page>
     <v-ons-toolbar class="home-toolbar">
       <div class="right">

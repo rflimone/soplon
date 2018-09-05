@@ -27,6 +27,21 @@ export default new Vuex.Store({
         token: JSON.parse(localStorage.getItem('auth')),
         user: JSON.parse(localStorage.getItem('user'))
       },
+      mutations: {
+        token (state, value) {
+          state.token = value
+        }
+      },
+      actions: {
+        token (context, token) {
+          let storage = {}
+          Object.keys(token).map((key) => {
+            storage[key] = token[key]
+          })
+          localStorage.setItem('auth', JSON.stringify(storage))
+          context.commit('token', storage)
+        }
+      },
       getters: {
         token: state => state.token
       }

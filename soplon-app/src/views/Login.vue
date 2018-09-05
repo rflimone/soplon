@@ -63,8 +63,8 @@ let Login = {};
       Logger.debug(`login attemp with: ${this.$data.username}`)
       AuthService.getToken(this.$data.username, this.$data.password).then(token => {
         Logger.debug(`saving token in the local storage for: ${self.$data.username}`, token)
-        // self.$store.dispatch('auth/token', token)
-        self.$router.push({path: '/home'})
+        self.$store.dispatch('auth/token', token)
+        self.$router.push({name: 'home'})
       })
     }
   }
