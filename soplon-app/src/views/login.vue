@@ -1,20 +1,21 @@
 <template id='Login'>
-  <ons-page>
+  <v-ons-page>
     <div class="header">
       <img src="../assets/Soplon_Mesa de trabajo 1.svg">
     </div>
     <div class="input">
       <p>
-        <ons-input id="username" modifier="underbar" placeholder="Email" float v-model.trim="username"></ons-input>
+        <v-ons-input id="username" modifier="underbar" placeholder="Email" float v-model="username"></v-ons-input>
       </p>
       <p>
-        <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float v-model.trim="password"></ons-input>
+        <v-ons-input id="password" modifier="underbar" type="password" placeholder="Password" float v-model="password"></v-ons-input>
       </p>
       <p>
-        <ons-button @click="logIn" class="btn_login">Iniciar Sesión</ons-button>
+        <v-ons-button @click.prevent="logIn" class="btn_login">Iniciar Sesión</v-ons-button>
       </p>
+      <p v-if="error.username || error.password">* Invalid Credentials</p>
     </div>
-  </ons-page>
+  </v-ons-page>
 </template>
 
 <script>
@@ -30,7 +31,6 @@ let Login = {};
 
   this.created = function () {
     self = this
-    this.logIn()
   }
 
   this.data = function () {
@@ -43,14 +43,17 @@ let Login = {};
 
   this.methods = {
     logIn () {
+      Logger.debug('login invoked')
       this.$store.dispatch('form/error', {
         username: false,
         password: false
       })
       if (this.$data.username === null || this.$data.username === '') {
+        Logger.debug('username is required')
         this.$store.dispatch('form/error', { username: true })
       }
       if (this.$data.password === null || this.$data.password === '') {
+        Logger.debug('password is required')
         this.$store.dispatch('form/error', { password: true })
       }
 
@@ -68,7 +71,8 @@ let Login = {};
 
   this.computed = {
     ...mapGetters({
-      token: 'auth/token'
+      token: 'auth/token',
+      error: 'form/error-states'
     })
   }
 }).apply(Login)
