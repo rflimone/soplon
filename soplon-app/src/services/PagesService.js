@@ -4,13 +4,13 @@ import Store from '@/store'
 let PagesService = {};
 
 (function () {
-  this.getPagesByCategory = function () {
+  this.getPagesByCategory = function (category) {
     return new Promise((resolve, reject) => {
       Axios.get(
         `${process.env.API_HOST}/private/paginas`,
         {
           params: {
-            categoria: this.$data.category
+            categoria: category
           },
           headers: {
             'Authorization': `Bearer ${Store.getters['auth/token'].access_token}`

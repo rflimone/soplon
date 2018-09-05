@@ -1,6 +1,7 @@
 import Manga from '@/views/Manga'
 import Home from '@/views/HomePage'
 import Login from '@/views/Login'
+import CategoryPage from '@/views/CategoryPage'
 
 let routes = [
   {
@@ -18,6 +19,11 @@ let routes = [
     name: 'Manga',
     path: '/Manga',
     component: Manga
+  },
+  {
+    name: 'Category',
+    path: '/Category/:category',
+    component: CategoryPage
   }
 ]
 
