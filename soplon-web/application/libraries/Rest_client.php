@@ -8,7 +8,6 @@
  * @package       Api
  * @subpackage    Libraries
  * @category      Libraries
- * @author        Fabian bravo
  */
 
  class Rest_client{
