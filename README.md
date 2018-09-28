@@ -36,7 +36,7 @@ Al seleccionar un contenido debe solicitar tipo de recepción (email o celular)
 Al seleccionar tipo de recepción debe verificar su selección.
 Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a tu "tipo de recepción escogido", gracias por confiar en nosotros!"
 
-# Backend (Completado en 95%):
+# Backend (Completado en 100%):
 - [x] Login **(Ponderación: 5%)** 
 - [x] Mantenedor de Login (para cambiar datos, contraseña o desubscribirse) **(Ponderación:5%)**  
 - [x] Crawler, Bot o RSS que busque sitios y categorice automáticamente **(Ponderación:50%)** 
@@ -47,10 +47,10 @@ Finaliza Ruta 2 con mensaje "Próximamente se enviará el link de "contenido" a 
 - [x] Selección de categorías **(Ponderación:5%)** 
 - [x] Ranking de sitios web **(Ponderación:7,5%)**
 - [x] Ranking de tag de contenidos **(Ponderación:7,5%)** 
-- [ ] selección de tipo de recepción **(Ponderación:15%)**
+- [x] selección de tipo de recepción **(Ponderación:15%)**
 	- [x] Mail
 	- [x] SMS
-	- [ ] PUSH
+	- [x] PUSH
 
 # Frontend (Completado en 75%):
 - [x] Diseño **(Ponderación: 20%)**
